@@ -1,23 +1,117 @@
 {
   "extends": [
-    "plugin:storybook/recommended",
     "next",
-    "next/core-web-vitals",
-    "eslint:recommended"
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended"
   ],
-  "globals": {
-    "React": "readonly"
-  },
   "overrides": [
     {
-      "files": ["*.stories.@(ts|tsx|js|jsx|mjs|cjs)"],
+      "files": [
+        "**/__tests__/**"
+      ],
+      "plugins": [
+        "jest"
+      ],
+      "extends": [
+        "plugin:jest/recommended"
+      ],
       "rules": {
-        // example of overriding a rule
-        "storybook/hierarchy-separator": "error"
+        "jest/prefer-expect-assertions": "off"
       }
+    },
+    {
+      "files": [
+        "cypress/**",
+        "**/*.cy.js", "**/*.cy.jsx"
+      ],
+      "plugins": [
+        "cypress"
+      ],
+      "extends": [
+        "plugin:cypress/recommended"
+      ]
     }
   ],
   "rules": {
-    "no-unused-vars": [1, { "args": "after-used", "argsIgnorePattern": "^_" }]
+    "indent": [
+      "error",
+      4,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "keyword-spacing": 2,
+    "no-console": [
+      "error",
+      {
+        "allow": [
+          "warn",
+          "error"
+        ]
+      }
+    ],
+    "no-constant-condition": [
+      "off"
+    ],
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1
+      }
+    ],
+    "no-undef": [
+      "error"
+    ],
+    "no-unused-vars": [
+      "error"
+    ],
+    "object-curly-spacing": [
+      "error",
+      "always",
+      {
+        "objectsInObjects": false
+      }
+    ],
+    "quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ], //should add ".ts" if typescript project
+    "react/react-in-jsx-scope": "off",
+    "semi": 2,
+    "sort-keys": [
+      "error",
+      "asc",
+      {
+        "caseSensitive": false,
+        "minKeys": 2,
+        "natural": false
+      }
+    ],
+    "space-before-blocks": 2,
+    "space-before-function-paren": [
+      "error",
+      {
+        "anonymous": "ignore",
+        "asyncArrow": "always",
+        "named": "ignore"
+      }
+    ],
+    "space-in-parens": [
+      "error",
+      "never"
+    ]
   }
 }
