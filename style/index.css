@@ -1,0 +1,80 @@
+/* ensure all pages have Bootstrap CSS */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+.md-container {
+	max-width: 800px;
+	padding-top: 2rem;
+}
+
+.sml-card {
+	min-height: 215px;
+}
+
+.cntr-footer {
+	height: 80px;
+	margin-top: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-top: 1px solid #ccc;
+}
+
+.sml-logo {
+	height: 1em;
+	margin-left: 10px;
+}
+
+/* @see https://github.com/twbs/icons/issues/82 and https://stackoverflow.com/questions/65696042/bootstrap-icons-are-not-vertically-aligned-in-button */
+svg.bi {vertical-align: -0.125em;}
+
+#loadingoverlay {
+    position: fixed;
+    top: 0;
+	left: 0;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+	overflow-x: auto;
+    /* display: none; */
+    background: rgba(0,0,0,0.4);
+}
+
+.page-link__text {
+	justify-content: end;
+	width: 44px;
+}
+.page-link__button {
+	width: 165px;
+}
+
+.toast-container {
+	left: 40%;
+	min-height: 240px;
+	min-width: 350px;
+	position: fixed;
+	top: 10px;
+	z-index: 2;
+}
+
+/* Header */
+#header-brand {
+  max-width: 140px;
+}
+
+/* GitHub FAQ styles */
+.faq-q {
+	display: inline;
+	padding-bottom: 4px;
+	background-image: linear-gradient(to right, #d1d5da 50%, rgba(255, 255, 255, 0) 0%);
+	background-repeat: repeat-x;
+	background-position: bottom;
+	background-size: 10px 1px;
+
+	font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+	font-size: 16px;
+	line-height: 2;
+}
+
+.faq-a {
+	color: #586069;
+}

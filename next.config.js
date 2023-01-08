@@ -1,11 +1,14 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['i.pravatar.cc'],
+    domains: [
+      // Avatar icons from different Next-auth providers.
+      'avatars.githubusercontent.com',
+      'lh3.googleusercontent.com',
+    ],
   },
   i18n: {
-    locales: ['en', 'fr'],
+    locales: ['en'],
     defaultLocale: 'en',
     // localeDetection: false,
   },
