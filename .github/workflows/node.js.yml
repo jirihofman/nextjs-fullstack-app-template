@@ -14,8 +14,8 @@ env:
   NEXT_PUBLIC_NODE_ENV: test
   # Replaces the value set in .env.test.local
   # DB stuff. There is a default mysql server with root/root. See https://ovirium.com/blog/how-to-make-mysql-work-in-your-github-actions/
-  MYSQL_URI: "mysql://${{ secrets.DB_USER }}:${{ secrets.DB_PASSWORD }}@127.0.0.1:3306/${{ secrets.DB_DATABASE }}?synchronize=false&charset=utf8mb4"
-  DB_DATABASE: test_db
+  MYSQL_URI: "mysql://root:root@127.0.0.1:3306/nfat2?synchronize=false&charset=utf8mb4"
+  DB_DATABASE: nfat
   DB_USER: root
   DB_PASSWORD: root
 jobs:
