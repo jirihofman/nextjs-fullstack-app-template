@@ -60,9 +60,30 @@ jobs:
       env:
         GH_TOKEN: ${{ github.token }}
       run: npm ci
-    - name: Test 🧪
-      env:
-        GH_TOKEN: ${{ github.token }}
-      run: |
-        echo Run all the sh!t with a single command runnable also on dev machines
-        npm run test:ci
+    # - name: Test 🧪
+    #   env:
+    #     GH_TOKEN: ${{ github.token }}
+    #   run: |
+    #     echo Run all the sh!t with a single command runnable on devs' machines
+    #     npm run test:ci
+    - name: End to end tests run 🧪
+      uses: cypress-io/github-action@v5.0.2
+      with:
+        # we have already installed all dependencies above
+        install: false
+        start: npm run start
+        wait-on: 'http://localhost:5100/api/status'
+        wait-on-timeout: 20
+        browser: chrome
+    # there might be no screenshots and videos created when there are no test failures
+    # so only upload screenshots if previous step has failed
+    - uses: actions/upload-artifact@v3
+      if: failure()
+      with:
+        name: screenshots
+        path: cypress/screenshots
+    - uses: actions/upload-artifact@v3
+      if: failure()
+      with:
+        name: videos
+        path: cypress/videos
