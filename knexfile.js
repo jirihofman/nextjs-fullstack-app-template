@@ -3,7 +3,7 @@ const dev = process.env.NODE_ENV !== 'production';
 const { MYSQL_URI } = loadEnvConfig('./', dev).combinedEnv;
 
 // eslint-disable-next-line no-console
-console.log('🐉  knexfile.js. MYSQL_URI: %s. NODE_ENV: %s', MYSQL_URI, process.env.NODE_ENV);
+console.log('🔎  knexfile.js. MYSQL_URI: %s. NODE_ENV: %s', MYSQL_URI, process.env.NODE_ENV);
 
 const config = {
     client: 'mysql',

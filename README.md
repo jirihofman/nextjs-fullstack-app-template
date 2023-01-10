@@ -10,7 +10,10 @@ Based on [alexeagleson/nextjs-fullstack-app-template](https://github.com/alexeag
 ## Added
 - implement unit and end-to-end testing in a Next.s app with Jest and Cypress
 - create CI/CD pipeline with Github actions and Vercel
-- implement SSO authentication and internationalization in a Next.js app using NextAuth and i18next
+- internationalization using i18next
+- NextAuth
+    - only endpoints implemented
+	- no db structure
 - connect a database to your Next.js app with MySQL using Knex
 
 # Steps after you use the template
