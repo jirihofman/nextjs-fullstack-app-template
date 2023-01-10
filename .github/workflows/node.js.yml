@@ -76,6 +76,7 @@ jobs:
         wait-on: 'http://localhost:5100/api/status'
         wait-on-timeout: 20
         browser: chrome
+        config: 'baseUrl=http://localhost:5100'
     # there might be no screenshots and videos created when there are no test failures
     # so only upload screenshots if previous step has failed
     - uses: actions/upload-artifact@v3
