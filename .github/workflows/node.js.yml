@@ -71,7 +71,9 @@ jobs:
       with:
         # we have already installed all dependencies above
         install: false
-        start: npm run start
+        start: |
+          npm run build
+          npm run start
         wait-on: 'http://localhost:5100/api/status'
         wait-on-timeout: 20
         browser: chrome
