@@ -15,7 +15,9 @@ env:
   # Replaces the value set in .env.test.local
   # DB stuff. There is a default mysql server with root/root. See https://ovirium.com/blog/how-to-make-mysql-work-in-your-github-actions/
   MYSQL_URI: "mysql://${{ secrets.DB_USER }}:${{ secrets.DB_PASSWORD }}@127.0.0.1:3306/${{ secrets.DB_DATABASE }}?synchronize=false&charset=utf8mb4"
-
+  DB_DATABASE: test_db
+  DB_USER: root
+  DB_PASSWORD: root
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -29,13 +31,13 @@ jobs:
       run: |
         sudo /etc/init.d/mysql start
         echo "MySQL started"
-        mysql -e 'SHOW DATABASES;' -u${{ secrets.DB_USER }} -p${{ secrets.DB_PASSWORD }}
+        mysql -e 'SHOW DATABASES;' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
         echo "MySQL default databases"
-        mysql -e 'CREATE DATABASE ${{ secrets.DB_DATABASE }};' -u${{ secrets.DB_USER }} -p${{ secrets.DB_PASSWORD }}
+        mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
         echo "MySQL new database created"
-        mysql -e 'SHOW DATABASES;' -u${{ secrets.DB_USER }} -p${{ secrets.DB_PASSWORD }}
+        mysql -e 'SHOW DATABASES;' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
         echo "MySQL default databases with the new one"
-        mysql -e 'ALTER USER "root"@"localhost" IDENTIFIED WITH mysql_native_password BY "${{ secrets.DB_PASSWORD }}";' -u${{ secrets.DB_USER }} -p${{ secrets.DB_PASSWORD }}
+        mysql -e 'ALTER USER "root"@"localhost" IDENTIFIED WITH mysql_native_password BY "${{ env.DB_PASSWORD }}";' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
         echo "MySQL user changed to be able to auth using username/password"
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
