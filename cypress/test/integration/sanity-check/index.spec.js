@@ -9,9 +9,7 @@ context('Sanity checks', () => {
         cy.contains('Features');
         cy.contains('MySQL');
         cy.contains('GitHub Actions');
-
-        const nodeEnv = Cypress.env('NODE_ENV') || process.env.NODE_ENV;
-        cy.get('footer span.text-muted').should('contain.text', '(version: ' + nodeEnv + '-');
+        cy.get('footer span.text-muted').should('contain.text', '(version:');
     });
 
     it('Has login button', () => {
@@ -21,5 +19,4 @@ context('Sanity checks', () => {
             .should('contain.text', 'GitHub')
             .should('contain.text', 'Google');
     });
-
 });

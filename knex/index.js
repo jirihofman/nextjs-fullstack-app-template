@@ -1,6 +1,5 @@
 import knex from 'knex';
 import config from '../knexfile.js';
-console.log("KONFIGGGG", config)
 /**
  * Global is used here to ensure the connection
  * is cached across hot-reloads in development
