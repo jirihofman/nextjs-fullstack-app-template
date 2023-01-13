@@ -1,5 +1,5 @@
 import { Button, Container } from 'react-bootstrap';
-import { BookHalf, PersonFill, Plus } from 'react-bootstrap-icons';
+import { BookHalf, /* PersonFill, */ Plus } from 'react-bootstrap-icons';
 import Link from 'next/link';
 
 const Feature = () => {
@@ -8,16 +8,16 @@ const Feature = () => {
             buttons: [
                 <Link key={1} passHref href="https://nextjs.org/"><Button className='m-1' variant="primary"><BookHalf className='bi' /> Nextjs</Button></Link>,
             ],
-            desc: 'React, Bootstrap, latest Nextjs',
+            desc: 'React, Bootstrap, Nextjs',
             id: 1,
             img: <span>🚀</span>,
-            title: 'Latest Nextjs',
+            title: 'Nextjs 12.3',
         }, {
             buttons: [],
             desc: 'With initial Knex migration',
             id: 1,
             img: <span>💾</span>,
-            title: 'MySQL with Knex',
+            title: 'MySQL 8.0 with Knex',
         }, {
             buttons: [
                 <Link passHref key={1} href={'https://jestjs.io/'}><Button className='m-1' variant="primary" ><Plus className='bi' /> Jest</Button></Link>,
@@ -33,14 +33,12 @@ const Feature = () => {
             id: 3,
             img: <span>⚙</span>,
             title: 'GitHub Actions',
-        }, {
-            buttons: [
-                <Link key={2} href='/user/profile'><Button className='m-1' variant="primary"><PersonFill className='bi' /> Profile</Button></Link>,
-            ],
-            desc: 'Default GitHub Actions running all your Jest and Cypress tests.',
-            id: 3,
-            img: <span>🫃</span>,
-            title: 'Authentication',
+        // }, {
+        //     buttons: [],
+        //     desc: 'Default GitHub Actions running all your Jest and Cypress tests.',
+        //     id: 3,
+        //     img: <span>🫃</span>,
+        //     title: 'Authentication',
         },
     ];
     return (
