@@ -1,9 +1,12 @@
 {
-  "name": "my-next-app-template",
-  "author": "Jiří Hofman",
+  "name": "nextjs-fullstack-app-template-potato",
+  "author": {
+    "name": "Jiří Hofman",
+    "url": "https://nextjs-fullstack-app-template-potato.vercel.app"
+  },
   "description": "A template for creating a production-ready fullstack Next.js application with: React Bootstrap, MySQL, Knex using Cypress and GitHub Actions",
-  "displayName": "My Next App TODO",
-  "version": "0.1.0",
+  "displayName": "My Next App Template",
+  "version": "0.2.0",
   "private": false,
   "license": "MIT",
   "engines": {
