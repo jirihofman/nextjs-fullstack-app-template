@@ -8,19 +8,19 @@ const Feature = () => {
             buttons: [
                 <Link key={1} passHref href="https://nextjs.org/"><Button className='m-1' variant="primary"><BookHalf className='bi' /> Nextjs</Button></Link>,
             ],
-            desc: 'Nextjs',
+            desc: 'Nextjs framework.',
             img: <span>🚀</span>,
             title: 'Nextjs 12.3',
         }, {
             buttons: [
                 <Link key={1} passHref href="https://nextjs.org/"><Button className='m-1' variant="primary"><BookHalf className='bi' /> Nextjs</Button></Link>,
             ],
-            desc: 'React Bootstrap',
+            desc: 'Bootstrap 5.',
             img: <span>🚀</span>,
-            title: 'Nextjs 12.3',
+            title: 'React Bootstrap',
         }, {
             buttons: [],
-            desc: 'With initial Knex migration',
+            desc: 'With example initial Knex migration.',
             img: <span>💾</span>,
             title: 'MySQL 8.0 with Knex',
         }, {
@@ -28,7 +28,7 @@ const Feature = () => {
                 <Link passHref key={1} href={'https://jestjs.io/'}><Button className='m-1' variant="primary" ><Plus className='bi' /> Jest</Button></Link>,
                 <Link passHref key={1} href={'https://www.cypress.io/'}><Button className='m-1' variant="primary" ><Plus className='bi' /> Cypress</Button></Link>,
             ],
-            desc: 'Unit, API and E2E tests with Jest and Cypress',
+            desc: 'Unit, API and E2E tests with Jest and Cypress.',
             img: <span>🧪</span>,
             title: 'Cypress and Jest tests',
         }, {
@@ -37,9 +37,11 @@ const Feature = () => {
             img: <span>⚙</span>,
             title: 'GitHub Actions',
         }, {
-            buttons: [],
+            buttons: [
+                <Link key={1} passHref href="https://next-auth.js.org/"><Button className='m-1' variant="primary"><BookHalf className='bi' /> NextAuth.js</Button></Link>,
+            ],
             desc: 'Using MySQL database to store users and sessions. Simply click the Sign in button.',
-            img: <span>🫃</span>,
+            img: <span>👤</span>,
             title: 'NextAuth authentication',
         },
     ];
