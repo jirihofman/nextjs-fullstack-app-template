@@ -3,7 +3,7 @@ import { TypeORMLegacyAdapter } from '@next-auth/typeorm-legacy-adapter';
 // import AppleProvider from 'next-auth/providers/apple';
 // import FacebookProvider from 'next-auth/providers/facebook';
 import GithubProvider from 'next-auth/providers/github';
-import GoogleProvider from 'next-auth/providers/google';
+// import GoogleProvider from 'next-auth/providers/google';
 import pjson from '../../../package.json';
 // import GoogleProvider from 'next-auth/providers/google';
 // import { getKnex } from '../../../knex';
@@ -47,10 +47,10 @@ export default NextAuth({
             clientId: process.env.GITHUB_ID,
             clientSecret: process.env.GITHUB_SECRET,
         }),
-        GoogleProvider({
-            clientId: process.env.GOOGLE_ID,
-            clientSecret: process.env.GOOGLE_SECRET
-        }),
+        // GoogleProvider({
+        //     clientId: process.env.GOOGLE_ID,
+        //     clientSecret: process.env.GOOGLE_SECRET
+        // }),
     ],
     site: process.env.NEXTAUTH_URL || 'http://localhost:4100',
 });
