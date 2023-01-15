@@ -32,7 +32,6 @@ export default function Header() {
 
                     <Navbar.Collapse id="navbarScroll">
                         <Nav className='me-auto'>
-                            <Link passHref href="#"><Nav.Link onClick={() => { alert('I do nothing!'); }}>Menu item</Nav.Link></Link>
                             <Link passHref href="https://github.com/jirihofman/nextjs-fullstack-app-template"><Nav.Link>GitHub</Nav.Link></Link>
 
                             <NavDropdown title={'Site'}>
