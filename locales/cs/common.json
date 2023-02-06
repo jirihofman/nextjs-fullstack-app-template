@@ -1,0 +1,14 @@
+{
+	"version": "verze",
+	"footer": {
+		"developedWithLove": "Vyvinuto s ❤️"
+	},
+	"header": {
+		"aboutthisTemplate1": "Tato šablona",
+		"aboutthisTemplate2": "Vám umožní rychle vytvořit fullstack react aplikaci",
+		"about": "O aplikaci",
+		"profile": "Profil",
+		"signin": "Přihlásit",
+		"signout": "Odhlásit"
+	}
+}

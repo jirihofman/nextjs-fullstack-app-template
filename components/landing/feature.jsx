@@ -24,7 +24,7 @@ const Feature = () => {
             buttons: [],
             desc: 'With example initial Knex migration.',
             img: <Image alt='' height={w} width={w} src='https://cdn-icons-png.flaticon.com/512/5968/5968313.png' />,
-            title: 'MySQL 8.0 with Knex',
+            title: 'MySQL 8.0 + Knex',
         }, {
             buttons: [
                 <Link passHref key={2} href={'https://www.cypress.io/'}><Button className='m-1' variant="primary" ><BookHalf className='bi' /> Cypress</Button></Link>,

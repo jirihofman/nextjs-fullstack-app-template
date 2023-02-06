@@ -1,11 +1,13 @@
 import pjson from '../../package.json';
 import { signIn, signOut, useSession } from 'next-auth/react';
-import { Container, Modal, Nav, NavDropdown, Navbar } from 'react-bootstrap';
+import { Container, Modal, Nav, NavDropdown, Navbar, Button } from 'react-bootstrap';
+import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 import styles from './header.module.css';
 
 export default function Header() {
 
+    const { t, lang } = useTranslation();
     const { data: session, status } = useSession();
     const loading = status === 'loading';
 
@@ -27,7 +29,7 @@ export default function Header() {
                     {/* Display Sign-in for iPhones. Empty space when signed in. */}
                     <Nav className='d-inline d-sm-none' style={{ minWidth: '50px' }}>
                         {session ? session.user.image && <span style={{ backgroundImage: `url('${session.user.image}')`, marginTop: '-5px' }} className={styles.avatar} />
-                            : <Nav.Link disabled={loading} onClick={handleSignInClick}>Sign in</Nav.Link>}
+                            : <Nav.Link disabled={loading} onClick={handleSignInClick}>{t('common:header.signin')}</Nav.Link>}
                     </Nav>
 
                     <Navbar.Collapse id="navbarScroll">
@@ -35,19 +37,21 @@ export default function Header() {
                             <Link passHref href="https://github.com/jirihofman/nextjs-fullstack-app-template"><Nav.Link>GitHub</Nav.Link></Link>
 
                             <NavDropdown title={'Site'}>
+                                <Link href="/" locale="cs"><Button variant='outline-secondary' size='sm' active={lang === 'cs'} className='ms-2'>🇨🇿</Button></Link>
+                                <Link href="/" locale="en"><Button variant='outline-secondary' size='sm' active={lang === 'en'}>🇬🇧</Button></Link>
                                 <Link passHref href="/faq"><NavDropdown.Item>FAQ</NavDropdown.Item></Link>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item role='button' data-bs-toggle='modal' data-bs-target='#exampleModal'>About</NavDropdown.Item>
+                                <NavDropdown.Item role='button' data-bs-toggle='modal' data-bs-target='#exampleModal'>{t('common:header.about')}</NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
                         <Nav>
                             {session ? <NavDropdown align={'end'} title={session.user.image && <span style={{ backgroundImage: `url('${session.user.image}')`, marginTop: '-5px' }} className={styles.avatar} />}>
-                                <Link passHref href="/user/profile"><NavDropdown.Item>Your profile</NavDropdown.Item></Link>
+                                <Link passHref href="/user/profile"><NavDropdown.Item>{t('common:header.profile')}</NavDropdown.Item></Link>
                                 <NavDropdown.Divider />
-                                <Link passHref href="/api/auth/signout"><NavDropdown.Item onClick={(e) => { e.preventDefault(); signOut(); }}>Sign out</NavDropdown.Item></Link>
+                                <Link passHref href="/api/auth/signout"><NavDropdown.Item onClick={(e) => { e.preventDefault(); signOut(); }}>{t('common:header.signout')}</NavDropdown.Item></Link>
                             </NavDropdown>
                                 /* Display Sign-in for iPads and larger */
-                                : <Link passHref href="/api/auth/signin"><Nav.Link className='d-none d-sm-inline' disabled={loading} onClick={handleSignInClick}>Sign in</Nav.Link></Link>
+                                : <Link passHref href="/api/auth/signin"><Nav.Link className='d-none d-sm-inline' disabled={loading} onClick={handleSignInClick}>{t('common:header.signin')}</Nav.Link></Link>
                             }
                         </Nav>
                     </Navbar.Collapse>
@@ -58,16 +62,16 @@ export default function Header() {
                 <Modal.Dialog className="modal-dialog">
                     <div className="modal-content">
                         <Modal.Header>
-                            <h5 className="modal-title" id="exampleModalLabel">About <b>{pjson.displayName}</b></h5>
+                            <h5 className="modal-title" id="exampleModalLabel">{t('common:header.about')} <b>{pjson.displayName}</b></h5>
                         </Modal.Header>
                         <div className="modal-body">
                             <p>
-                                This template, <b>{pjson.displayName}</b>, lets you quickly setup fullstack react app:
+                                {t('common:header.aboutthisTemplate1')}, <b>{pjson.displayName}</b>, {t('common:header.aboutthisTemplate2')}.
                             </p>
                             <table>
                                 <tbody>
                                     <tr>
-                                        <th>Version</th>
+                                        <th>{t('common:version')}</th>
                                         <td>{pjson.version}</td>
                                     </tr>
                                 </tbody>

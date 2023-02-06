@@ -1,0 +1,14 @@
+{
+	"version": "version",
+	"footer": {
+		"developedWithLove": "Developed with ❤️"
+	},
+	"header": {
+		"aboutthisTemplate1": "This template",
+		"aboutthisTemplate2": "lets you quickly setup fullstack react app",
+		"about": "About",
+		"profile": "Profile",
+		"signin": "Sign in",
+		"signout": "Sign out"
+	}
+}
