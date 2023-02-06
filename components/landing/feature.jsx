@@ -1,9 +1,11 @@
 import { Button, Container } from 'react-bootstrap';
 import { BookHalf } from 'react-bootstrap-icons';
+import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 import Image from 'next/image';
 
 const Feature = () => {
+    const { t } = useTranslation();
     const w = '40px';
     const features = [
         {
@@ -49,7 +51,7 @@ const Feature = () => {
     ];
     return (
         <Container className='px-4 py-5'>
-            <h2 className="pb-2 border-bottom" id='features'>Features</h2>
+            <h2 className="pb-2 border-bottom" id='features'>{t('common:features')}</h2>
             <div className="row g-4 py-5 row-cols-1 row-cols-lg-3">
                 {
                     features.map((feature, key) => <div key={key} className="col d-flex align-items-start">

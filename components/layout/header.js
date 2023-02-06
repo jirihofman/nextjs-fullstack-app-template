@@ -66,7 +66,7 @@ export default function Header() {
                         </Modal.Header>
                         <div className="modal-body">
                             <p>
-                                {t('common:header.aboutthisTemplate1')}, <b>{pjson.displayName}</b>, {t('common:header.aboutthisTemplate2')}.
+                                {t('common:header.description', { displayName: pjson.displayName })}
                             </p>
                             <table>
                                 <tbody>
