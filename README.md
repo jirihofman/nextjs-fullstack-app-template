@@ -8,12 +8,10 @@ Based on [alexeagleson/nextjs-fullstack-app-template](https://github.com/alexeag
 - storybook
 
 ## Added
-- implement unit and end-to-end testing in a Next.s app with Jest and Cypress
+- implement unit and end-to-end testing in a Nextjs app with Jest and Cypress
 - create CI/CD pipeline with Github actions and Vercel
-- internationalization using i18next
+- internationalization using [next-translate](https://github.com/aralroca/next-translate)
 - NextAuth
-    - only endpoints implemented
-	- no db structure
 - connect a database to your Next.js app with MySQL using Knex
 
 # Steps after you use the template
@@ -21,7 +19,7 @@ Once you create a repository based on this template, you should do the following
 ## `package.json`
 - [ ] change name and displayName
 - [ ] MIT license ok?
-- [ ] keywords, homepage
+- [ ] keywords, homepage (hero, features)
 
 ## MySQL and Knex
 - [ ] rename database
