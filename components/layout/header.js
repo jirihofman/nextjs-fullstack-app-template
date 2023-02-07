@@ -37,9 +37,10 @@ export default function Header() {
                             <Link passHref href="https://github.com/jirihofman/nextjs-fullstack-app-template"><Nav.Link>GitHub</Nav.Link></Link>
 
                             <NavDropdown title={'Site'}>
-                                <Link href="/" locale="cs"><Button variant='outline-secondary' size='sm' active={lang === 'cs'} className='ms-2'>🇨🇿</Button></Link>
-                                <Link href="/" locale="en"><Button variant='outline-secondary' size='sm' active={lang === 'en'}>🇬🇧</Button></Link>
                                 <Link passHref href="/faq"><NavDropdown.Item>FAQ</NavDropdown.Item></Link>
+                                <NavDropdown.Divider />
+                                <Link href="/" locale="cs"><Button variant='outline-secondary' size='sm' active={lang === 'cs'} className='me-2 ms-2'>🇨🇿</Button></Link>
+                                <Link href="/" locale="en"><Button variant='outline-secondary' size='sm' active={lang === 'en'} className='me-2'>🇬🇧</Button></Link>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item role='button' data-bs-toggle='modal' data-bs-target='#exampleModal'>{t('common:header.about')}</NavDropdown.Item>
                             </NavDropdown>

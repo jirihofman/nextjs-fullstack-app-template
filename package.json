@@ -6,7 +6,7 @@
   },
   "description": "A template for creating a production-ready fullstack Next.js application with: React Bootstrap, MySQL, Knex using Cypress and GitHub Actions",
   "displayName": "My Next App Template",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "private": false,
   "license": "MIT",
   "engines": {

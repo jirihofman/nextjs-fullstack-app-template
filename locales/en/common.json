@@ -1,6 +1,14 @@
 {
+	"accessDenied1": "Access Denied",
+	"accessDenied2": "You must be signed in to view this page",
 	"features": "Features",
 	"version": "version",
+	"feature": {
+		"desc2": "With example initial Knex migration",
+		"desc3": "Unit, API and E2E tests with Jest and Cypress.",
+		"desc4": "Default GitHub Actions running all your Jest and Cypress tests.",
+		"desc5": "Using MySQL database to store users and sessions. Simply click the Sign in button"
+	},
 	"footer": {
 		"developedWithLove": "Developed with ❤️"
 	},
