@@ -1,9 +1,11 @@
 import { Button, Container } from 'react-bootstrap';
 import { BookHalf } from 'react-bootstrap-icons';
+import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 import Image from 'next/image';
 
 const Feature = () => {
+    const { t } = useTranslation();
     const w = '40px';
     const features = [
         {
@@ -21,35 +23,40 @@ const Feature = () => {
             img: <Image alt='' height={w} width={w} src='https://raw.githubusercontent.com/react-bootstrap/react-bootstrap/7c66098610ea7aea89edfe38988990ba8abcd31d/www/static/logo.svg' />,
             title: 'React Bootstrap',
         }, {
-            buttons: [],
-            desc: 'With example initial Knex migration.',
+            buttons: [
+                <Link passHref key={2} href={'https://dev.mysql.com/doc/relnotes/mysql/8.0/en/'}><Button className='m-1' variant="primary" ><BookHalf className='bi' /> MySQL</Button></Link>,
+                <Link passHref key={1} href={'https://knexjs.org/'}><Button className='m-1' variant="primary" ><BookHalf className='bi' /> Knex</Button></Link>,
+            ],
+            desc: t('common:feature.desc2'),
             img: <Image alt='' height={w} width={w} src='https://cdn-icons-png.flaticon.com/512/5968/5968313.png' />,
-            title: 'MySQL 8.0 with Knex',
+            title: 'MySQL 8.0 + Knex',
         }, {
             buttons: [
                 <Link passHref key={2} href={'https://www.cypress.io/'}><Button className='m-1' variant="primary" ><BookHalf className='bi' /> Cypress</Button></Link>,
                 <Link passHref key={1} href={'https://jestjs.io/'}><Button className='m-1' variant="primary" ><BookHalf className='bi' /> Jest</Button></Link>,
             ],
-            desc: 'Unit, API and E2E tests with Jest and Cypress.',
+            desc: t('common:feature.desc3'),
             img: <Image alt='' height={w} width={w} src='https://avatars.githubusercontent.com/u/8908513?s=280&v=4' />,
             title: 'Cypress and Jest tests',
         }, {
-            buttons: [],
-            desc: 'Default GitHub Actions running all your Jest and Cypress tests.',
+            buttons: [
+                <Link key={1} passHref href="https://docs.github.com/en/actions"><Button className='m-1' variant="primary"><BookHalf className='bi' /> GitHub Actions</Button></Link>,
+            ],
+            desc: t('common:feature.desc4'),
             img: <Image alt='' height={w} width={w} src='https://github.githubassets.com/images/modules/site/features/actions-icon-actions.svg' />,
             title: 'GitHub Actions',
         }, {
             buttons: [
                 <Link key={1} passHref href="https://next-auth.js.org/"><Button className='m-1' variant="primary"><BookHalf className='bi' /> NextAuth.js</Button></Link>,
             ],
-            desc: 'Using MySQL database to store users and sessions. Simply click the Sign in button.',
+            desc: t('common:feature.desc5'),
             img: <Image alt='' height={w} width={w} src='https://next-auth.js.org/img/logo/logo-sm.png' />,
             title: 'NextAuth authentication',
         },
     ];
     return (
         <Container className='px-4 py-5'>
-            <h2 className="pb-2 border-bottom" id='features'>Features</h2>
+            <h2 className="pb-2 border-bottom" id='features'>{t('common:features')}</h2>
             <div className="row g-4 py-5 row-cols-1 row-cols-lg-3">
                 {
                     features.map((feature, key) => <div key={key} className="col d-flex align-items-start">

@@ -1,11 +1,7 @@
 const withTM = require('next-transpile-modules')(['@jirihofman/react-profile']);
+const nextTranslate = require('next-translate');
 
 const nextConfig = {
-    i18n: {
-        defaultLocale: 'en',
-        locales: ['en'],
-        // localeDetection: false,
-    },
     images: {
         domains: [
             // Avatar icons from different Next-auth providers. Icons for included software.
@@ -20,4 +16,4 @@ const nextConfig = {
     },
     reactStrictMode: true,
 };
-module.exports = withTM(nextConfig);
+module.exports = nextTranslate(withTM(nextConfig));
