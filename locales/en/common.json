@@ -6,7 +6,6 @@
 	},
 	"header": {
 		"description": "This template, {{displayName}}, lets you quickly setup fullstack react app.",
-		"aboutthisTemplate2": "lets you quickly setup fullstack react app",
 		"about": "About",
 		"profile": "Profile",
 		"signin": "Sign in",
