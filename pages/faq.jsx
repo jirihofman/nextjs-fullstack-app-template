@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 export default function Faq({ data }) {
 
     return (
-        <Main title={'Roadmap'}>
+        <Main title={'FAQ'}>
             <Container>
-                <h1>Frequently Asked Questions</h1>
+                <h1>FAQ</h1>
                 {data.map((q, i) =>
                     <div className='col-10 float-left clearfix mb-3 mb-md-2' key={i}>
                         <h2>
@@ -41,6 +41,10 @@ export async function getStaticProps() {
                 {
                     answer: 'Yes.',
                     question: 'Does it create any database tables?',
+                },
+                {
+                    answer: 'It was the implementation with the smallest changes needed.',
+                    question: 'Why did you choose next-translate for i18n?',
                 },
                 {
                     answer: 'Yes.',

@@ -52,6 +52,13 @@ const Feature = () => {
             desc: t('common:feature.desc5'),
             img: <Image alt='' height={w} width={w} src='https://next-auth.js.org/img/logo/logo-sm.png' />,
             title: 'NextAuth authentication',
+        }, {
+            buttons: [
+                <Link key={1} passHref href="https://github.com/aralroca/next-translate/"><Button className='m-1' variant="primary"><BookHalf className='bi' /> next-translate</Button></Link>,
+            ],
+            desc: t('common:feature.desc6', null, { default: 'I18n: 🇨🇿, 🇬🇧' }),
+            img: <Image alt='' height={w} width={w} src='https://github.com/aralroca/next-translate/raw/master/images/logo.svg' />,
+            title: 'Translations',
         },
     ];
     return (
