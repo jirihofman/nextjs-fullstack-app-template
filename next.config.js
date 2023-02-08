@@ -7,6 +7,7 @@ const nextConfig = {
             // Avatar icons from different Next-auth providers. Icons for included software.
             'next-auth.js.org',
             'github.githubassets.com',
+            'github.com',
             'avatars.githubusercontent.com',
             'camo.githubusercontent.com',
             'raw.githubusercontent.com',
