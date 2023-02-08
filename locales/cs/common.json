@@ -16,7 +16,7 @@
 		"description": "Tato šablona, {{displayName}}, Vám umožní rychle vytvořit fullstack react aplikaci. ",
 		"about": "O aplikaci",
 		"profile": "Profil",
-		"signin": "Přihlásit",
-		"signout": "Odhlásit"
+		"signin": "Login",
+		"signout": "Logout"
 	}
 }
