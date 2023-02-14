@@ -12,7 +12,7 @@ context('Sanity checks', () => {
         cy.get('footer span.text-muted').should('contain.text', '(version:');
     });
 
-    // Next auth stuff later, worsipping goddess Yindy. Says no token for next auth in CI.
+    // Next auth stuff later, worshipping goddess Yindy. Says no token for next auth in CI.
     it.skip('Has login button', () => {
         cy.visit('/');
         cy.get('a.nav-link[href="/api/auth/signin"]').should('be.visible').click();

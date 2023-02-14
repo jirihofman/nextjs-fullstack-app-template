@@ -13,6 +13,16 @@ Based on [alexeagleson/nextjs-fullstack-app-template](https://github.com/alexeag
 - internationalization using [next-translate](https://github.com/aralroca/next-translate)
 - NextAuth
 - connect a database to your Next.js app with MySQL using Knex
+- code coverage
+
+## Code coverage notes
+
+Added in order for Cypress to produce coverage into `cypress-coverage` folder instead of `coverage`
+```json
+"nyc": {
+    "report-dir": "cypress-coverage"
+  },
+```
 
 # Steps after you use the template
 Once you create a repository based on this template, you should do the following steps:
