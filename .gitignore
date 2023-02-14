@@ -5,8 +5,15 @@
 /.pnp
 .pnp.js
 
-# testing
+# testing and coverage
 /coverage
+coverage.json
+/jest-coverage
+/reports
+/.nyc_output
+cypress/videos
+cypress/screenshots
+xunit-*.xml
 
 # next.js
 /.next/
