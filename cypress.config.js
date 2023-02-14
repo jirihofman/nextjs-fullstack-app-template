@@ -1,4 +1,5 @@
 const { defineConfig } = require('cypress');
+const codeCoverageTask = require('@cypress/code-coverage/task');
 
 module.exports = defineConfig({
     chromeWebSecurity: false,
@@ -7,6 +8,11 @@ module.exports = defineConfig({
             bundler: 'webpack',
             framework: 'next',
         },
+        setupNodeEvents(on, config) {
+            codeCoverageTask(on, config);
+            return config;
+        },
+        specPattern: 'components/**/*.cy.{js,jsx,ts,tsx}',
     },
     e2e: {
     // We've imported your old cypress plugins here.

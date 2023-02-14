@@ -1,4 +1,3 @@
-import { signIn } from 'next-auth/react';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 
@@ -10,11 +9,7 @@ export default function AccessDenied() {
         <div style={{ borderLeft: '2px solid red', padding: '10px 30px' }}>
             <h1>{t('common:accessDenied1')}</h1>
             <p>
-                <Link href="/api/auth/signin"
-                    onClick={(e) => {
-                        e.preventDefault();
-                        signIn();
-                    }}>{t('common:accessDenied2')}</Link>
+                <Link href="/api/auth/signin">{t('common:accessDenied2')}</Link>
             </p>
         </div>
     );

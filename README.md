@@ -17,7 +17,7 @@ Based on [alexeagleson/nextjs-fullstack-app-template](https://github.com/alexeag
 
 ## Code coverage notes
 
-Added in order for Cypress to produce coverage into `cypress-coverage` folder instead of `coverage`
+Added in order for Cypress to produce coverage into `cypress-coverage` folder instead of `coverage`. Note that the folder `cypress-coverage` is used for both component and e2e Cypress tests. That's why the coverage summary needs to be exported right after the first Cypress test (in this case component) finishes and before the other (e2e, see package.json scripts for ordering) begins.
 ```json
 "nyc": {
     "report-dir": "cypress-coverage"
