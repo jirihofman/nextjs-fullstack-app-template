@@ -81,6 +81,8 @@ jobs:
         wait-on-timeout: 20
         browser: chrome
         config: 'baseUrl=http://localhost:5100'
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v3
     # there might be no screenshots and videos created when there are no test failures
     # so only upload screenshots if previous step has failed
     - uses: actions/upload-artifact@v3
