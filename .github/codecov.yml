@@ -1,5 +1,5 @@
 ignore:
-- (?s:.*/__tests__/.*)\Z
+  - (?s:.*/__tests__/.*)\Z
 parsers:
   javascript:
     enable_partials: false
