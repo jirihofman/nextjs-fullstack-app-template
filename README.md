@@ -1,6 +1,8 @@
 # Nextjs app template
 Based on [alexeagleson/nextjs-fullstack-app-template](https://github.com/alexeagleson/nextjs-fullstack-app-template).
 
+[![codecov](https://codecov.io/gh/jirihofman/nextjs-fullstack-app-template/branch/master/graph/badge.svg?token=JSVBDBBVR4)](https://codecov.io/gh/jirihofman/nextjs-fullstack-app-template)
+
 ## Removed
 - typescript
 - .vscode
