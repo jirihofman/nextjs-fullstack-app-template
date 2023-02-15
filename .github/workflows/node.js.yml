@@ -58,6 +58,7 @@ jobs:
           ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
     - name: Install 🛠
       env:
+        # GH_TOKEN for @jirihofman/react-profile package
         GH_TOKEN: ${{ github.token }}
       run: npm ci
     - name: Knex migrations 💾
