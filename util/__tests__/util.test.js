@@ -1,4 +1,4 @@
-import { getLangIcon } from '../util';
+import { getLangIcon, niceBytes } from '../util';
 
 describe('getLangIcon', () => {
     it('cz', () => {
@@ -9,5 +9,11 @@ describe('getLangIcon', () => {
         expect(getLangIcon()).toBe('🇬🇧');
         expect(getLangIcon('')).toBe('🇬🇧');
         expect(getLangIcon('foo')).toBe('🇬🇧');
+    });
+});
+
+describe.skip('niceBytes', () => {
+    it('KB', () => {
+        expect(niceBytes(2148)).toBe('2.1 KB');
     });
 });
