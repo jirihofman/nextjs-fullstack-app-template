@@ -27,7 +27,7 @@
     "migrate:status": "knex migrate:status --esm",
     "seed:create": "knex seed:make --esm",
     "seed:run": "knex seed:run --esm",
-    "test": "jest && npm run test:coverage:component && cypress run --browser chrome --env coverage=true",
+    "test": "test:coverage:jest && npm run test:coverage:component && cypress run --browser chrome --env coverage=true && cp cypress-coverage/coverage-final.json reports/from-cypress.json",
     "test:jest": "jest --watch",
     "test:build": "NODE_ENV=test next build",
     "test:start": "NODE_ENV=test next start -p 5100",
@@ -39,14 +39,12 @@
     "pretest": "rm -rf coverage jest-coverage cypress-coverage .nyc_output || true",
     "posttest": "npm run report:combined",
     "mkdir:reports": "mkdir reports || true",
-    "precopy:reports": "npm run mkdir:reports",
-    "copy:reports": "cp cypress-coverage/coverage-final.json reports/from-cypress.json && cp jest-coverage/coverage-final.json reports/from-jest.json",
-    "precombine:reports": "npm run copy:reports && mkdir .nyc_output || true",
+    "test:coverage:prepare-folders": "(mkdir .nyc_output || true) && (mkdir reports || true)",
     "combine:reports": "npx nyc merge reports && mv coverage.json .nyc_output/out.json",
     "prereport:combined": "npm run combine:reports",
     "report:combined": "npx nyc report --reporter lcov --reporter text --report-dir coverage",
-    "test:coverage:jest": "npm run mkdir:reports && jest && cp jest-coverage/coverage-final.json reports/from-jest.json",
-    "test:coverage:component": "npm run mkdir:reports && cypress run --component --browser chrome --env coverage=true && cp cypress-coverage/coverage-final.json reports/from-cypress-component.json"
+    "test:coverage:jest": "npm run test:coverage:prepare-folders && jest && cp jest-coverage/coverage-final.json reports/from-jest.json",
+    "test:coverage:component": "npm run test:coverage:prepare-folders && cypress run --component --browser chrome --env coverage=true && cp cypress-coverage/coverage-final.json reports/from-cypress-component.json"
   },
   "dependencies": {
     "@jirihofman/react-profile": "^0.1.0",
