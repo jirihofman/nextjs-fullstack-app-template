@@ -45,6 +45,7 @@
     "combine:reports": "npx nyc merge reports && mv coverage.json .nyc_output/out.json",
     "prereport:combined": "npm run combine:reports",
     "report:combined": "npx nyc report --reporter lcov --reporter text --report-dir coverage",
+    "test:coverage:jest": "jest && cp jest-coverage/coverage-final.json reports/from-jest.json",
     "test:coverage:component": "cypress run --component --browser chrome --env coverage=true && cp cypress-coverage/coverage-final.json reports/from-cypress-component.json"
   },
   "dependencies": {
