@@ -58,6 +58,7 @@ jobs:
           ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
     - name: Install 🛠
       env:
+        # GH_TOKEN for @jirihofman/react-profile package
         GH_TOKEN: ${{ github.token }}
       run: npm ci
     - name: Knex migrations 💾
@@ -70,17 +71,26 @@ jobs:
     #   run: |
     #     echo Run all the sh!t with a single command runnable on devs' machines
     #     npm run test:ci
-    - name: End to end tests run 🧪
-      uses: cypress-io/github-action@v5.0.2
-      with:
-        # we have already installed all dependencies above
-        install: false
-        build: npm run build
-        start: npm run start
-        wait-on: 'http://localhost:5100/api/status'
-        wait-on-timeout: 20
-        browser: chrome
-        config: 'baseUrl=http://localhost:5100'
+    # - name: End to end tests run 🧪
+    #   uses: cypress-io/github-action@v5.0.2
+    #   with:
+    #     # we have already installed all dependencies above
+    #     install: false
+    #     build: npm run build
+    #     start: npm run start
+    #     wait-on: 'http://localhost:5100/api/status'
+    #     wait-on-timeout: 20
+    #     browser: chrome
+    #     config: 'baseUrl=http://localhost:5100'
+    - run: npm run pretest
+    - run: npm run test:coverage:prepare-folders
+    - run: npm run test:coverage:jest
+    - run: npm run test:coverage:component
+    - run: npm run test:db:clear && npm run test:db:init && npm run test:build && npm run test:start & npm run test:wait-on && npm run test:cy:run
+    - run: npm run posttest
+    - run: npm run report:combined
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v3
     # there might be no screenshots and videos created when there are no test failures
     # so only upload screenshots if previous step has failed
     - uses: actions/upload-artifact@v3

@@ -52,5 +52,5 @@ export default NextAuth({
         //     clientSecret: process.env.GOOGLE_SECRET
         // }),
     ],
-    site: process.env.NEXTAUTH_URL || 'http://localhost:4100',
+    site: process.env.NEXTAUTH_URL,
 });
