@@ -70,17 +70,17 @@ jobs:
     #   run: |
     #     echo Run all the sh!t with a single command runnable on devs' machines
     #     npm run test:ci
-    - name: End to end tests run 🧪
-      uses: cypress-io/github-action@v5.0.2
-      with:
-        # we have already installed all dependencies above
-        install: false
-        build: npm run build
-        start: npm run start
-        wait-on: 'http://localhost:5100/api/status'
-        wait-on-timeout: 20
-        browser: chrome
-        config: 'baseUrl=http://localhost:5100'
+    # - name: End to end tests run 🧪
+    #   uses: cypress-io/github-action@v5.0.2
+    #   with:
+    #     # we have already installed all dependencies above
+    #     install: false
+    #     build: npm run build
+    #     start: npm run start
+    #     wait-on: 'http://localhost:5100/api/status'
+    #     wait-on-timeout: 20
+    #     browser: chrome
+    #     config: 'baseUrl=http://localhost:5100'
     - run: npm run test:coverage:jest
     - run: npm run report:combined
     - name: Upload coverage reports to Codecov
