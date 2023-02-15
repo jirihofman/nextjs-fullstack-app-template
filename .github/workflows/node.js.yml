@@ -82,6 +82,7 @@ jobs:
     #     browser: chrome
     #     config: 'baseUrl=http://localhost:5100'
     - run: npm run test:coverage:jest
+    - run: npm run test:coverage:component
     - run: npm run report:combined
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3
