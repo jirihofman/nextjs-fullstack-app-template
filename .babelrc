@@ -1,13 +1,5 @@
 {
 	"presets": [
 		"next/babel"
-	],
-	"plugins": [
-		["istanbul", {
-			"exclude": [
-				"!**/node_modules/**",
-				"**/test/**"
-			]
-		}, "some unique name"]
 	]
 }
