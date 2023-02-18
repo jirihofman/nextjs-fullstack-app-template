@@ -10,7 +10,7 @@ const Feature = () => {
     const features = [
         {
             buttons: [
-                <Link key={1} passHref href="https://nextjs.org/"><Button className='m-1' variant="primary"><BookHalf className='bi' /> Nextjs</Button></Link>,
+                <Link key={1} passHref href="https://nextjs.org/" legacyBehavior><Button className='m-1' variant="primary"><BookHalf className='bi' /> Nextjs</Button></Link>,
             ],
             desc: 'Nextjs framework.',
             img: <Image
@@ -22,7 +22,7 @@ const Feature = () => {
             title: 'Nextjs 12.3',
         }, {
             buttons: [
-                <Link key={1} passHref href="https://react-bootstrap.github.io/"><Button className='m-1' variant="primary"><BookHalf className='bi' /> React Bootstrap</Button></Link>,
+                <Link key={1} passHref href="https://react-bootstrap.github.io/" legacyBehavior><Button className='m-1' variant="primary"><BookHalf className='bi' /> React Bootstrap</Button></Link>,
             ],
             desc: 'Bootstrap 5.',
             img: <Image
@@ -34,8 +34,12 @@ const Feature = () => {
             title: 'React Bootstrap',
         }, {
             buttons: [
-                <Link passHref key={2} href={'https://dev.mysql.com/doc/relnotes/mysql/8.0/en/'}><Button className='m-1' variant="primary" ><BookHalf className='bi' /> MySQL</Button></Link>,
-                <Link passHref key={1} href={'https://knexjs.org/'}><Button className='m-1' variant="primary" ><BookHalf className='bi' /> Knex</Button></Link>,
+                <Link
+                    passHref
+                    key={2}
+                    href={'https://dev.mysql.com/doc/relnotes/mysql/8.0/en/'}
+                    legacyBehavior><Button className='m-1' variant="primary" ><BookHalf className='bi' /> MySQL</Button></Link>,
+                <Link passHref key={1} href={'https://knexjs.org/'} legacyBehavior><Button className='m-1' variant="primary" ><BookHalf className='bi' /> Knex</Button></Link>,
             ],
             desc: t('common:feature.desc2'),
             img: <Image
@@ -47,8 +51,8 @@ const Feature = () => {
             title: 'MySQL 8.0 + Knex',
         }, {
             buttons: [
-                <Link passHref key={2} href={'https://www.cypress.io/'}><Button className='m-1' variant="primary" ><BookHalf className='bi' /> Cypress</Button></Link>,
-                <Link passHref key={1} href={'https://jestjs.io/'}><Button className='m-1' variant="primary" ><BookHalf className='bi' /> Jest</Button></Link>,
+                <Link passHref key={2} href={'https://www.cypress.io/'} legacyBehavior><Button className='m-1' variant="primary" ><BookHalf className='bi' /> Cypress</Button></Link>,
+                <Link passHref key={1} href={'https://jestjs.io/'} legacyBehavior><Button className='m-1' variant="primary" ><BookHalf className='bi' /> Jest</Button></Link>,
             ],
             desc: t('common:feature.desc3'),
             img: <Image
@@ -60,7 +64,7 @@ const Feature = () => {
             title: 'Cypress and Jest tests',
         }, {
             buttons: [
-                <Link key={1} passHref href="https://docs.github.com/en/actions"><Button className='m-1' variant="primary"><BookHalf className='bi' /> GitHub Actions</Button></Link>,
+                <Link key={1} passHref href="https://docs.github.com/en/actions" legacyBehavior><Button className='m-1' variant="primary"><BookHalf className='bi' /> GitHub Actions</Button></Link>,
             ],
             desc: t('common:feature.desc4'),
             img: <Image
@@ -72,7 +76,7 @@ const Feature = () => {
             title: 'GitHub Actions',
         }, {
             buttons: [
-                <Link key={1} passHref href="https://next-auth.js.org/"><Button className='m-1' variant="primary"><BookHalf className='bi' /> NextAuth.js</Button></Link>,
+                <Link key={1} passHref href="https://next-auth.js.org/" legacyBehavior><Button className='m-1' variant="primary"><BookHalf className='bi' /> NextAuth.js</Button></Link>,
             ],
             desc: t('common:feature.desc5'),
             img: <Image
@@ -84,7 +88,11 @@ const Feature = () => {
             title: 'NextAuth authentication',
         }, {
             buttons: [
-                <Link key={1} passHref href="https://github.com/aralroca/next-translate/"><Button className='m-1' variant="primary"><BookHalf className='bi' /> next-translate</Button></Link>,
+                <Link
+                    key={1}
+                    passHref
+                    href="https://github.com/aralroca/next-translate/"
+                    legacyBehavior><Button className='m-1' variant="primary"><BookHalf className='bi' /> next-translate</Button></Link>,
             ],
             desc: t('common:feature.desc6', null, { default: 'I18n: 🇨🇿, 🇬🇧' }),
             img: <Image

@@ -34,25 +34,28 @@ export default function Header() {
 
                     <Navbar.Collapse id="navbarScroll">
                         <Nav className='me-auto'>
-                            <Link passHref href="https://github.com/jirihofman/nextjs-fullstack-app-template"><Nav.Link>GitHub</Nav.Link></Link>
+                            <Link
+                                passHref
+                                href="https://github.com/jirihofman/nextjs-fullstack-app-template"
+                                legacyBehavior><Nav.Link>GitHub</Nav.Link></Link>
 
                             <NavDropdown title={'Site'}>
-                                <Link passHref href="/faq"><NavDropdown.Item>FAQ</NavDropdown.Item></Link>
+                                <Link passHref href="/faq" legacyBehavior><NavDropdown.Item>FAQ</NavDropdown.Item></Link>
                                 <NavDropdown.Divider />
-                                <Link href="/" locale="cs"><Button variant='outline-secondary' size='sm' active={lang === 'cs'} className='me-2 ms-2'>🇨🇿</Button></Link>
-                                <Link href="/" locale="en"><Button variant='outline-secondary' size='sm' active={lang === 'en'} className='me-2'>🇬🇧</Button></Link>
+                                <Link href="/" locale="cs" legacyBehavior><Button variant='outline-secondary' size='sm' active={lang === 'cs'} className='me-2 ms-2'>🇨🇿</Button></Link>
+                                <Link href="/" locale="en" legacyBehavior><Button variant='outline-secondary' size='sm' active={lang === 'en'} className='me-2'>🇬🇧</Button></Link>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item role='button' data-bs-toggle='modal' data-bs-target='#exampleModal'>{t('common:header.about')}</NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
                         <Nav>
                             {session ? <NavDropdown align={'end'} title={session.user.image && <span style={{ backgroundImage: `url('${session.user.image}')`, marginTop: '-5px' }} className={styles.avatar} />}>
-                                <Link passHref href="/user/profile"><NavDropdown.Item>{t('common:header.profile')}</NavDropdown.Item></Link>
+                                <Link passHref href="/user/profile" legacyBehavior><NavDropdown.Item>{t('common:header.profile')}</NavDropdown.Item></Link>
                                 <NavDropdown.Divider />
-                                <Link passHref href="/api/auth/signout"><NavDropdown.Item onClick={(e) => { e.preventDefault(); signOut(); }}>{t('common:header.signout')}</NavDropdown.Item></Link>
+                                <Link passHref href="/api/auth/signout" legacyBehavior><NavDropdown.Item onClick={(e) => { e.preventDefault(); signOut(); }}>{t('common:header.signout')}</NavDropdown.Item></Link>
                             </NavDropdown>
                                 /* Display Sign-in for iPads and larger */
-                                : <Link passHref href="/api/auth/signin"><Nav.Link className='d-none d-sm-inline' disabled={loading} onClick={handleSignInClick}>{t('common:header.signin')}</Nav.Link></Link>
+                                : <Link passHref href="/api/auth/signin" legacyBehavior><Nav.Link className='d-none d-sm-inline' disabled={loading} onClick={handleSignInClick}>{t('common:header.signin')}</Nav.Link></Link>
                             }
                         </Nav>
                     </Navbar.Collapse>
