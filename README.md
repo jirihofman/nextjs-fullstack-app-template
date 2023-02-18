@@ -26,6 +26,18 @@ Added in order for Cypress to produce coverage into `cypress-coverage` folder in
   },
 ```
 
+In order to generate coverage for Cypress component testing, there needs to be istanbul plugin. Otherwise the coverage is not generated, hence the error: `cp: cannot stat 'cypress-coverage/coverage-final.json': No such file or directory`.
+```js
+	"plugins": [
+		["istanbul", {
+			"exclude": [
+				"!**/node_modules/**",
+				"**/test/**"
+			]
+		}, "some unique name"]
+	]
+```
+
 # Steps after you use the template
 Once you create a repository based on this template, you should do the following steps:
 ## `package.json`
