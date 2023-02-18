@@ -2,7 +2,7 @@ import { Button, Container } from 'react-bootstrap';
 import { BookHalf } from 'react-bootstrap-icons';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 
 const Feature = () => {
     const { t } = useTranslation();
