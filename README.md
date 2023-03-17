@@ -1,7 +1,7 @@
 # Nextjs app template
 Based on [alexeagleson/nextjs-fullstack-app-template](https://github.com/alexeagleson/nextjs-fullstack-app-template).
 
-[![codecov](https://codecov.io/gh/jirihofman/nextjs-fullstack-app-template/branch/master/graph/badge.svg?token=JSVBDBBVR4)](https://codecov.io/gh/jirihofman/nextjs-fullstack-app-template)
+[![codecov](https://codecov.io/gh/jirihofman/nextjs-fullstack-app-template/branch/master/graph/badge.svg)](https://codecov.io/gh/jirihofman/nextjs-fullstack-app-template)
 
 ## Removed
 - typescript
@@ -14,8 +14,8 @@ Based on [alexeagleson/nextjs-fullstack-app-template](https://github.com/alexeag
 - create CI/CD pipeline with Github actions and Vercel
 - internationalization using [next-translate](https://github.com/aralroca/next-translate)
 - NextAuth
-- connect a database to your Next.js app with MySQL using Knex
-- code coverage
+- connect a database to your Next.js app with MySQL using Knex query builder
+- code coverage via [codecov.io](https://codecov.io)
 
 ## Code coverage notes
 
@@ -47,9 +47,16 @@ Once you create a repository based on this template, you should do the following
 
 ## MySQL and Knex
 - [ ] rename database
-- [ ] run Knex migrations
+- [ ] run Knex migrations with
+```sh
+npm run migrate:latest
+npm run seed:run
+```
 
 ## GitHub Actions
 
 ## .env files
 TODO: rename command
+
+## Codecov
+- [ ] In README.md replace `jirihofman/nextjs-fullstack-app-template` with `your-username/your-new-repository`
