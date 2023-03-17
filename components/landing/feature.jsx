@@ -1,8 +1,9 @@
-import { Button, Container } from 'react-bootstrap';
+import { Button, Container, Badge } from 'react-bootstrap';
 import { BookHalf } from 'react-bootstrap-icons';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 import Image from 'next/image';
+import packageLock from '../../package-lock.json';
 
 const Feature = () => {
     const { t } = useTranslation();
@@ -10,7 +11,7 @@ const Feature = () => {
     const features = [
         {
             buttons: [
-                <Link key={1} passHref href="https://nextjs.org/" legacyBehavior><Button className='m-1' variant="primary"><BookHalf className='bi' /> Nextjs</Button></Link>,
+                <Link key={1} passHref href="https://nextjs.org/" legacyBehavior><Button className='m-1' variant="primary"><BookHalf className='bi' /> Nextjs {VersionBadge('next')}</Button></Link>,
             ],
             desc: 'Nextjs framework.',
             img: <Image
@@ -19,12 +20,13 @@ const Feature = () => {
                 width={w}
                 src='https://camo.githubusercontent.com/f21f1fa29dfe5e1d0772b0efe2f43eca2f6dc14f2fede8d9cbef4a3a8210c91d/68747470733a2f2f6173736574732e76657263656c2e636f6d2f696d6167652f75706c6f61642f76313636323133303535392f6e6578746a732f49636f6e5f6c696768745f6261636b67726f756e642e706e67'
             />,
-            title: 'Nextjs 12.3',
+            title: 'Nextjs',
         }, {
             buttons: [
-                <Link key={1} passHref href="https://react-bootstrap.github.io/" legacyBehavior><Button className='m-1' variant="primary"><BookHalf className='bi' /> React Bootstrap</Button></Link>,
+                <Link key={1} passHref href="https://getbootstrap.com/" legacyBehavior><Button className='m-1' variant="primary"><BookHalf className='bi' /> Bootstrap {VersionBadge('bootstrap')}</Button></Link>,
+                <Link key={2} passHref href="https://react-bootstrap.github.io/" legacyBehavior><Button className='m-1' variant="primary"><BookHalf className='bi' /> React Bootstrap {VersionBadge('react-bootstrap')}</Button></Link>,
             ],
-            desc: 'Bootstrap 5.',
+            desc: 'Bootstrap 5 + React Bootstrap.',
             img: <Image
                 alt=''
                 height={w}
@@ -39,7 +41,7 @@ const Feature = () => {
                     key={2}
                     href={'https://dev.mysql.com/doc/relnotes/mysql/8.0/en/'}
                     legacyBehavior><Button className='m-1' variant="primary" ><BookHalf className='bi' /> MySQL</Button></Link>,
-                <Link passHref key={1} href={'https://knexjs.org/'} legacyBehavior><Button className='m-1' variant="primary" ><BookHalf className='bi' /> Knex</Button></Link>,
+                <Link passHref key={1} href={'https://knexjs.org/'} legacyBehavior><Button className='m-1' variant="primary" ><BookHalf className='bi' /> Knex {VersionBadge('knex')}</Button></Link>,
             ],
             desc: t('common:feature.desc2'),
             img: <Image
@@ -51,8 +53,8 @@ const Feature = () => {
             title: 'MySQL 8.0 + Knex',
         }, {
             buttons: [
-                <Link passHref key={2} href={'https://www.cypress.io/'} legacyBehavior><Button className='m-1' variant="primary" ><BookHalf className='bi' /> Cypress</Button></Link>,
-                <Link passHref key={1} href={'https://jestjs.io/'} legacyBehavior><Button className='m-1' variant="primary" ><BookHalf className='bi' /> Jest</Button></Link>,
+                <Link passHref key={2} href={'https://www.cypress.io/'} legacyBehavior><Button className='m-1' variant="primary" ><BookHalf className='bi' /> Cypress {VersionBadge('cypress')}</Button></Link>,
+                <Link passHref key={1} href={'https://jestjs.io/'} legacyBehavior><Button className='m-1' variant="primary" ><BookHalf className='bi' /> Jest {VersionBadge('jest')}</Button></Link>,
             ],
             desc: t('common:feature.desc3'),
             img: <Image
@@ -76,7 +78,7 @@ const Feature = () => {
             title: 'GitHub Actions',
         }, {
             buttons: [
-                <Link key={1} passHref href="https://next-auth.js.org/" legacyBehavior><Button className='m-1' variant="primary"><BookHalf className='bi' /> NextAuth.js</Button></Link>,
+                <Link key={1} passHref href="https://next-auth.js.org/" legacyBehavior><Button className='m-1' variant="primary"><BookHalf className='bi' /> NextAuth.js {VersionBadge('next-auth')}</Button></Link>,
             ],
             desc: t('common:feature.desc5'),
             img: <Image
@@ -92,7 +94,7 @@ const Feature = () => {
                     key={1}
                     passHref
                     href="https://github.com/aralroca/next-translate/"
-                    legacyBehavior><Button className='m-1' variant="primary"><BookHalf className='bi' /> next-translate</Button></Link>,
+                    legacyBehavior><Button className='m-1' variant="primary"><BookHalf className='bi' /> next-translate {VersionBadge('next-translate')}</Button></Link>,
             ],
             desc: t('common:feature.desc6', null, { default: 'I18n: 🇨🇿, 🇬🇧' }),
             img: <Image
@@ -126,3 +128,9 @@ const Feature = () => {
 };
 
 export default Feature;
+
+/** Creates a Badge with currently installed package version. */
+const VersionBadge = (name) => {
+    const version = packageLock.dependencies[name]?.version;
+    return <Badge bg='info'>{version}</Badge>;
+};
