@@ -31,7 +31,7 @@
     "test:jest": "jest --watch",
     "test:build": "NODE_ENV=test next build",
     "test:start": "NODE_ENV=test next start -p 5100",
-    "test:wait-on": "wait-on http://localhost:5100",
+    "test:wait-on": "wait-on http://127.0.0.1:5100",
     "test:cy:run": "CYPRESS_BASE_URL=http://localhost:5100 CYPRESS_NODE_ENV=test cypress run --browser chrome --env coverage=true",
     "test:db:clear": "NODE_ENV=test npm run migrate:rollback-all",
     "test:db:init": "NODE_ENV=test npm run migrate:latest && NODE_ENV=test npm run seed:run",
@@ -43,8 +43,8 @@
     "combine:reports": "npx nyc merge reports && mv coverage.json .nyc_output/out.json",
     "prereport:combined": "npm run combine:reports",
     "report:combined": "npx nyc report --reporter lcov --reporter text --report-dir coverage",
-    "test:coverage:jest": "jest && cp jest-coverage/coverage-final.json reports/from-jest.json",
-    "test:coverage:component": "cypress run --component --browser chrome --env coverage=true && cp cypress-coverage/coverage-final.json reports/from-cypress-component.json",
+    "test:coverage:jest": "NODE_ENV=test jest && cp jest-coverage/coverage-final.json reports/from-jest.json",
+    "test:coverage:component": "NODE_ENV=test cypress run --component --browser chrome --env coverage=true && cp cypress-coverage/coverage-final.json reports/from-cypress-component.json",
     "test:coverage:e2e": "cypress run --browser chrome --env coverage=true && cp cypress-coverage/coverage-final.json reports/from-cypress.json"
   },
   "dependencies": {
@@ -54,13 +54,13 @@
     "knex": "^2.3.0",
     "lodash": "^4.17.21",
     "mysql": "^2.18.1",
-    "next": "^12.3.0",
+    "next": "^13.2.4",
     "next-auth": "^4.10.3",
     "next-translate": "^1.6.0",
-    "react": "18.2.0",
+    "react": "^18.2.0",
     "react-bootstrap": "^2.3.1",
     "react-bootstrap-icons": "^1.8.2",
-    "react-dom": "18.2.0"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.8",
@@ -72,7 +72,7 @@
     "babel-plugin-istanbul": "^6.1.1",
     "cypress": "^12.3.0",
     "eslint": "8.12.0",
-    "eslint-config-next": "12.3.4",
+    "eslint-config-next": "^13.2.4",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-jest": "^27.2.1",
     "husky": "^7.0.4",
