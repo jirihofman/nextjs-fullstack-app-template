@@ -1,6 +1,6 @@
 import pjson from '../../package.json';
 import { signIn, signOut, useSession } from 'next-auth/react';
-import { Container, Modal, Nav, NavDropdown, Navbar, Button } from 'react-bootstrap';
+import { Container, Modal, Nav, NavDropdown, Navbar, Button, Spinner, ProgressBar } from 'react-bootstrap';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 import styles from './header.module.css';
@@ -29,7 +29,7 @@ export default function Header() {
                     {/* Display Sign-in for iPhones. Empty space when signed in. */}
                     <Nav className='d-inline d-sm-none' style={{ minWidth: '50px' }}>
                         {session ? session.user.image && <span style={{ backgroundImage: `url('${session.user.image}')`, marginTop: '-5px' }} className={styles.avatar} />
-                            : <Nav.Link disabled={loading} onClick={handleSignInClick}>{t('common:header.signin')}</Nav.Link>}
+                            : loading ? <Spinner animation='border' variant='secondary' /> : <Nav.Link onClick={handleSignInClick}>{t('common:header.signin')}</Nav.Link>}
                     </Nav>
 
                     <Navbar.Collapse id="navbarScroll">
@@ -55,7 +55,7 @@ export default function Header() {
                                 <Link passHref href="/api/auth/signout" legacyBehavior><NavDropdown.Item onClick={(e) => { e.preventDefault(); signOut(); }}>{t('common:header.signout')}</NavDropdown.Item></Link>
                             </NavDropdown>
                                 /* Display Sign-in for iPads and larger */
-                                : <Link passHref href="/api/auth/signin" legacyBehavior><Nav.Link className='d-none d-sm-inline' disabled={loading} onClick={handleSignInClick}>{t('common:header.signin')}</Nav.Link></Link>
+                                : loading ? <ProgressBar now={100} striped animated className='mx-auto' /> : <Link passHref href="/api/auth/signin" legacyBehavior><Nav.Link className='d-none d-sm-inline' disabled={loading} onClick={handleSignInClick}>{t('common:header.signin')}</Nav.Link></Link>
                             }
                         </Nav>
                     </Navbar.Collapse>
