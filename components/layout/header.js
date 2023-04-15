@@ -55,7 +55,7 @@ export default function Header() {
                                 <Link passHref href="/api/auth/signout" legacyBehavior><NavDropdown.Item onClick={(e) => { e.preventDefault(); signOut(); }}>{t('common:header.signout')}</NavDropdown.Item></Link>
                             </NavDropdown>
                                 /* Display Sign-in for iPads and larger */
-                                : loading ? <ProgressBar now={100} striped animated className='mx-auto' /> : <Link passHref href="/api/auth/signin" legacyBehavior><Nav.Link className='d-none d-sm-inline' disabled={loading} onClick={handleSignInClick}>{t('common:header.signin')}</Nav.Link></Link>
+                                : loading ? <ProgressBar now={100} striped animated variant='secondary' style={{ minWidth: '62px' }} /> : <Link passHref href="/api/auth/signin" legacyBehavior><Nav.Link className='d-none d-sm-inline' disabled={loading} onClick={handleSignInClick}>{t('common:header.signin')}</Nav.Link></Link>
                             }
                         </Nav>
                     </Navbar.Collapse>
