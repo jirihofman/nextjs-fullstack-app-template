@@ -110,7 +110,7 @@ const Feature = () => {
                 <Link
                     key={1}
                     passHref
-                    href="https://github.com/aralroca/next-translate/"
+                    href="https://notiflix.github.io/"
                     legacyBehavior><Button className='m-1' variant="primary"><BookHalf className='bi' /> notiflix {VersionBadge('notiflix')}</Button></Link>,
                 <ButtonToast key={2} />,
             ],
