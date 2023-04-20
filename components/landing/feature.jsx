@@ -4,6 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 import Image from 'next/image';
 import packageLock from '../../package-lock.json';
+import ButtonToast from './button-toast';
 
 const Feature = () => {
     const { t } = useTranslation();
@@ -104,6 +105,23 @@ const Feature = () => {
                 src='https://github.com/aralroca/next-translate/raw/master/images/logo.svg'
             />,
             title: 'Translations',
+        }, {
+            buttons: [
+                <Link
+                    key={1}
+                    passHref
+                    href="https://github.com/aralroca/next-translate/"
+                    legacyBehavior><Button className='m-1' variant="primary"><BookHalf className='bi' /> notiflix {VersionBadge('notiflix')}</Button></Link>,
+                <ButtonToast key={2} />,
+            ],
+            desc: t('common:feature.desc7'),
+            img: <Image
+                alt=''
+                height={w}
+                width={w}
+                src='https://raw.githubusercontent.com/notiflix/Notiflix/main/docs/favicon.png'
+            />,
+            title: 'Notiflix',
         },
     ];
     return (
