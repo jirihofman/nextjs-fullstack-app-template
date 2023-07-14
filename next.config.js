@@ -1,4 +1,3 @@
-const withTM = require('next-transpile-modules')(['@jirihofman/react-profile']);
 const nextTranslate = require('next-translate');
 
 const nextConfig = {
@@ -16,5 +15,6 @@ const nextConfig = {
         ],
     },
     reactStrictMode: true,
+    transpilePackages: ['@jirihofman/react-profile'],
 };
-module.exports = nextTranslate(withTM(nextConfig));
+module.exports = nextTranslate((nextConfig));
