@@ -18,6 +18,7 @@ env:
   DB_DATABASE: nfat2
   DB_USER: root
   DB_PASSWORD: root
+  GPR_TOKEN: ${{ secrets.GPR_TOKEN }}
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -45,7 +46,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - uses: actions/cache@v2
+    - uses: actions/cache@v3
       with:
         # See here for caching with `yarn` https://github.com/actions/cache/blob/main/examples.md#node---yarn or you can leverage caching with actions/setup-node https://github.com/actions/setup-node
         path: |
