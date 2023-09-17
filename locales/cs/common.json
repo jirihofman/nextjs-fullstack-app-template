@@ -10,7 +10,7 @@
 		"desc2": "Obsahuje ukázkovou Knex migraci.",
 		"desc3": "Unit, API a E2E testy používající Jest a Cypress.",
 		"desc4": "Výchozí GitHub Actions, která spustí všechny Vaše Jest a Cypress testy.",
-		"desc5": "Používá MySQL databázi pro ukládání uživatelů a session. Jednoduše klidněte na Sign in tlačítko.",
+		"desc5": "Správa uživatelů bez nutnosti připojení k databázi.",
 		"desc7": "Toast oznámení pomocí čistě Javascriptové knihovny."
 	},
 	"header": {

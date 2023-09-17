@@ -7,7 +7,7 @@
 		"desc2": "With example initial Knex migration",
 		"desc3": "Unit, API and E2E tests with Jest and Cypress.",
 		"desc4": "Default GitHub Actions running all your Jest and Cypress tests.",
-		"desc5": "Using MySQL database to store users and sessions. Simply click the Sign in button",
+		"desc5": "User management with signup, signin, password reset and more without any backend code.",
 		"desc7": "Pure JavaScript library for client-side toasts."
 	},
 	"footer": {

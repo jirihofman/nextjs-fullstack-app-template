@@ -4,9 +4,9 @@
     "name": "Jiří Hofman",
     "url": "https://nextjs-fullstack-app-template-potato.vercel.app"
   },
-  "description": "A template for creating a production-ready fullstack Next.js application with: React Bootstrap, MySQL, Knex using Cypress and GitHub Actions",
+  "description": "A template for creating a production-ready fullstack Next.js application with: React Bootstrap and Clerk using Cypress and GitHub Actions",
   "displayName": "My Next App Template",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "private": false,
   "license": "MIT",
   "engines": {
@@ -48,15 +48,13 @@
     "test:coverage:e2e": "cypress run --browser chrome --env coverage=true && cp cypress-coverage/coverage-final.json reports/from-cypress.json"
   },
   "dependencies": {
+    "@clerk/nextjs": "^4.23.5",
     "@jirihofman/react-profile": "^0.1.0",
     "@next-auth/typeorm-legacy-adapter": "^1.0.3",
     "@vercel/analytics": "^1.0.0",
     "bootstrap": "^5.2.1",
-    "knex": "^2.3.0",
     "lodash": "^4.17.21",
-    "mysql": "^2.18.1",
     "next": "^13.4.12",
-    "next-auth": "^4.20.1",
     "next-translate": "^1.6.0",
     "notiflix": "^3.2.6",
     "react": "^18.2.0",

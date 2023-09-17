@@ -2,9 +2,10 @@ const nextTranslate = require('next-translate');
 
 const nextConfig = {
     images: {
+        dangerouslyAllowSVG: true,
         domains: [
             // Avatar icons from different Next-auth providers. Icons for included software.
-            'next-auth.js.org',
+            'clerk.com',
             'github.githubassets.com',
             'github.com',
             'avatars.githubusercontent.com',
