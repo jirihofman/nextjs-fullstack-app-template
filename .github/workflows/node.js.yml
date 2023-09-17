@@ -62,10 +62,12 @@ jobs:
         # GH_TOKEN for @jirihofman/react-profile package
         GH_TOKEN: ${{ github.token }}
       run: npm ci
-    - name: Knex migrations 💾
-      run: |
-        npm run migrate:latest
-        npm run seed:run
+    # TODO: Replace Knex migrations with an ORM
+    # - name: Knex migrations 💾
+    #   run: |
+    #     npm run migrate:latest
+    #     npm run seed:run
+
     # - name: Test 🧪
     #   env:
     #     GH_TOKEN: ${{ github.token }}
