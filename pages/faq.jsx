@@ -39,7 +39,11 @@ export async function getStaticProps() {
                     question: `What is ${pjson.displayName}?`,
                 },
                 {
-                    answer: 'Yes.',
+                    answer: 'Yes. We switched to Clerk for authentication. It\'s a lot easier to use and has a lot more features.',
+                    question: 'Wasn\'t there Next-auth?',
+                },
+                {
+                    answer: 'No. It used to when it was using Next-auth, but now it uses Clerk. The plan is to add a database for user data.',
                     question: 'Does it create any database tables?',
                 },
                 {
