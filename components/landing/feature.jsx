@@ -149,6 +149,6 @@ export default Feature;
 
 /** Creates a Badge with currently installed package version. */
 const VersionBadge = (name) => {
-    const version = packageLock.dependencies[name]?.version;
+    const version = packageLock.packages['node_modules/' + name]?.version;
     return <Badge bg='info'>{version}</Badge>;
 };
