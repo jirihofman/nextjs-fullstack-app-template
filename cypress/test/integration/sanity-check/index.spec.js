@@ -7,7 +7,7 @@ context('Sanity checks', () => {
         cy.contains('Site').should('be.visible');
         cy.contains('template');
         cy.contains('Features');
-        cy.contains('MySQL');
+        cy.contains('Clerk');
         cy.contains('GitHub Actions');
         cy.get('footer span.text-muted').should('contain.text', '(version:');
     });
