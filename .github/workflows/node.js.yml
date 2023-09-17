@@ -19,6 +19,8 @@ env:
   DB_USER: root
   DB_PASSWORD: root
   GPR_TOKEN: ${{ secrets.GPR_TOKEN }}
+  NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY }}
+  CLERK_SECRET_KEY: ${{ secrets.CLERK_SECRET_KEY }}
 jobs:
   build:
     runs-on: ubuntu-latest
