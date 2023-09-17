@@ -48,7 +48,9 @@ export default function Header() {
                                 <NavDropdown.Item role='button' data-bs-toggle='modal' data-bs-target='#exampleModal'>{t('common:header.about')}</NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
-                        <Nav>
+                            
+                        {/* Hide Sign-in for all devices except iPhones. Empty space when signed in. */} 
+                        <Nav className='d-none d-sm-flex'>
                             {!isLoaded && <Spinner animation="border" variant="primary" size="sm" className='me-2' />}
                             {!userId && isLoaded && <Button variant='outline-primary' onClick={handleSignInClick}>{t('common:header.signin')}</Button>}
                             <UserButton afterSignOutUrl="/" />
