@@ -90,8 +90,8 @@ jobs:
     - run: npm run test:coverage:jest
     - run: npm run test:coverage:component
     
-    - run: npm run test:db:clear
-    - run: npm run test:db:init
+    #- run: npm run test:db:clear
+    #- run: npm run test:db:init
     - run: npm run test:build
     - run: npm run test:start & npm run test:wait-on
     - run: npm run test:cy:run
