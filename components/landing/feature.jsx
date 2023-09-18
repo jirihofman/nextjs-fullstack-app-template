@@ -79,7 +79,7 @@ const Feature = () => {
             title: 'GitHub Actions',
         }, {
             buttons: [
-                <Link key={1} passHref href="https://clerk.com/" legacyBehavior><Button className='m-1' variant="primary"><BookHalf className='bi' /> NextAuth.js {VersionBadge('@clerk/nextjs')}</Button></Link>,
+                <Link key={1} passHref href="https://clerk.com/" legacyBehavior><Button className='m-1' variant="primary"><BookHalf className='bi' /> Clerk {VersionBadge('@clerk/nextjs')}</Button></Link>,
             ],
             desc: t('common:feature.desc5'),
             img: <Image
