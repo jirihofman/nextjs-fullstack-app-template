@@ -1,3 +1,6 @@
+'use client';
+
+// TODO: rework transaltions
 import useTranslation from 'next-translate/useTranslation';
 import pjson from '../../package.json';
 

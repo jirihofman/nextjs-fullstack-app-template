@@ -1,3 +1,5 @@
+'use client';
+
 import { Button, Container, Badge } from 'react-bootstrap';
 import { BookHalf } from 'react-bootstrap-icons';
 import useTranslation from 'next-translate/useTranslation';

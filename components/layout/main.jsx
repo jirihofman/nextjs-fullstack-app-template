@@ -1,14 +1,13 @@
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import Script from 'next/script';
-import { Container } from 'react-bootstrap';
 import pjson from '../../package.json';
 import Footer from './footer';
 import Header from './header';
 
 export default function Main({ children, title }) {
     return (
-        <Container fluid='xxl'>
+        <div className='container-xxl'>
             <Script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js' integrity='sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf' crossOrigin='anonymous' defer />
             <Head>
                 <title>{[title, pjson.displayName].join(' - ')}</title>
@@ -18,7 +17,7 @@ export default function Main({ children, title }) {
             <Header />
             <main>{children}</main>
             <Footer />
-        </Container>
+        </div>
     );
 }
 

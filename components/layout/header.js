@@ -1,5 +1,7 @@
+'use client';
+
 import pjson from '../../package.json';
-import { UserButton, useAuth } from '@clerk/nextjs';
+import { UserButton, useSession } from '@clerk/nextjs';
 import { Container, Modal, Nav, NavDropdown, Navbar, Button, Spinner } from 'react-bootstrap';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
@@ -7,7 +9,7 @@ import Link from 'next/link';
 export default function Header() {
 
     const { t, lang } = useTranslation();
-    const { isLoaded, userId } = useAuth();
+    const { isLoaded, isSignedIn } = useSession();
 
     const handleSignInClick = (evt) => {
         evt.preventDefault();
@@ -28,8 +30,8 @@ export default function Header() {
                     {/* Display Sign-in for iPhones. Empty space when signed in. */}
                     <Nav className='d-inline d-sm-none' style={{ minWidth: '50px' }}>
                         {!isLoaded && <Spinner animation="border" variant="primary" size="sm" className='me-2' />}
-                        {!userId && isLoaded && <Button size='sm' variant='outline-primary' onClick={handleSignInClick}>{t('common:header.signin')}</Button>}
-                        <UserButton afterSignOutUrl="/" />
+                        {!isSignedIn && isLoaded && <Button size='sm' variant='outline-primary' onClick={handleSignInClick}>{t('common:header.signin')}</Button>}
+                        <UserButton afterSignOutUrl="/" userProfileUrl={'/user-profile'} userProfileMode='navigation' />
                     </Nav>
 
                     <Navbar.Collapse id="navbarScroll">
@@ -42,8 +44,16 @@ export default function Header() {
                             <NavDropdown title={'Site'}>
                                 <Link passHref href="/faq" legacyBehavior><NavDropdown.Item>FAQ</NavDropdown.Item></Link>
                                 <NavDropdown.Divider />
-                                <Link href="/" locale="cs" legacyBehavior><Button variant='outline-secondary' size='sm' active={lang === 'cs'} className='me-2 ms-2'>🇨🇿</Button></Link>
-                                <Link href="/" locale="en" legacyBehavior><Button variant='outline-secondary' size='sm' active={lang === 'en'} className='me-2'>🇬🇧</Button></Link>
+                                <Link href="/" locale="cs" legacyBehavior>
+                                    <Button variant='outline-secondary' size='sm' active={lang === 'cs'} className='me-2 ms-2'>
+                                        🇨🇿
+                                    </Button>
+                                </Link>
+                                <Link href="/" locale="en" legacyBehavior>
+                                    <Button variant='outline-secondary' size='sm' active={lang === 'en'} className='me-2'>
+                                        🇬🇧
+                                    </Button>
+                                </Link>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item role='button' data-bs-toggle='modal' data-bs-target='#exampleModal'>{t('common:header.about')}</NavDropdown.Item>
                             </NavDropdown>
@@ -52,8 +62,8 @@ export default function Header() {
                         {/* Hide Sign-in for all devices except iPhones. Empty space when signed in. */} 
                         <Nav className='d-none d-sm-flex'>
                             {!isLoaded && <Spinner animation="border" variant="primary" size="sm" className='me-2' />}
-                            {!userId && isLoaded && <Button variant='outline-primary' onClick={handleSignInClick}>{t('common:header.signin')}</Button>}
-                            <UserButton afterSignOutUrl="/" />
+                            {!isSignedIn && isLoaded && <Button variant='outline-primary' onClick={handleSignInClick}>{t('common:header.signin')}</Button>}
+                            <UserButton afterSignOutUrl="/" userProfileUrl={'/user-profile'} userProfileMode='navigation' />
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
