@@ -44,16 +44,16 @@ export default function Header() {
                             <NavDropdown title={'Site'}>
                                 <Link passHref href="/faq" legacyBehavior><NavDropdown.Item>FAQ</NavDropdown.Item></Link>
                                 <NavDropdown.Divider />
-                                <Link href="/" locale="cs" legacyBehavior>
+                                <a href="/cs">
                                     <Button variant='outline-secondary' size='sm' active={lang === 'cs'} className='me-2 ms-2'>
                                         🇨🇿
                                     </Button>
-                                </Link>
-                                <Link href="/" locale="en" legacyBehavior>
+                                </a>
+                                <a href="/en">
                                     <Button variant='outline-secondary' size='sm' active={lang === 'en'} className='me-2'>
                                         🇬🇧
                                     </Button>
-                                </Link>
+                                </a>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item role='button' data-bs-toggle='modal' data-bs-target='#exampleModal'>{t('common:header.about')}</NavDropdown.Item>
                             </NavDropdown>

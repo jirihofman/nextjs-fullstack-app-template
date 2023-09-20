@@ -1,3 +1,5 @@
+import { NextResponse } from 'next/server';
+import i18n from './i18n';
 import { authMiddleware } from '@clerk/nextjs';
 
 // This example protects all routes including api/trpc routes
@@ -6,6 +8,7 @@ import { authMiddleware } from '@clerk/nextjs';
 export default authMiddleware({
     publicRoutes: [
         '/',
+        '/en','/en/','/cs','/cs/','/cs/faq','/en/faq',
         '/sign-in/[[...index]]',
         '/sign-up/[[...index]]',
         '/forgot-password/[[...index]]',
@@ -16,3 +19,10 @@ export default authMiddleware({
 export const config = {
     matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
 };
+
+export function middleware(request) {
+    const locale = request.nextUrl.locale || i18n.defaultLocale;
+    request.nextUrl.searchParams.set('lang', locale);
+    request.nextUrl.href = request.nextUrl.href.replace(`/${locale}`, '');
+    return NextResponse.rewrite(request.nextUrl);
+}
