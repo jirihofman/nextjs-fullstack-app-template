@@ -37,23 +37,23 @@ const Feature = () => {
                 src='https://raw.githubusercontent.com/react-bootstrap/react-bootstrap/7c66098610ea7aea89edfe38988990ba8abcd31d/www/static/logo.svg'
             />,
             title: 'React Bootstrap',
-        // }, {
-        //     buttons: [
-        //         <Link
-        //             passHref
-        //             key={2}
-        //             href={'https://dev.mysql.com/doc/relnotes/mysql/8.0/en/'}
-        //             legacyBehavior><Button className='m-1' variant="primary" ><BookHalf className='bi' /> MySQL</Button></Link>,
-        //         <Link passHref key={1} href={'https://knexjs.org/'} legacyBehavior><Button className='m-1' variant="primary" ><BookHalf className='bi' /> Knex {VersionBadge('knex')}</Button></Link>,
-        //     ],
-        //     desc: t('common:feature.desc2'),
-        //     img: <Image
-        //         alt=''
-        //         height={w}
-        //         width={w}
-        //         src='https://cdn-icons-png.flaticon.com/512/5968/5968313.png'
-        //     />,
-        //     title: 'MySQL 8.0 + Knex',
+        }, {
+            buttons: [
+                <Link
+                    passHref
+                    key={2}
+                    href={'https://vercel.com/storage/postgres'}
+                    legacyBehavior><Button className='m-1' variant="primary" ><BookHalf className='bi' /> @vercel/postgres {VersionBadge('@vercel/postgres')}</Button></Link>,
+                <Link passHref key={1} href={'https://www.prisma.io/'} legacyBehavior><Button className='m-1' variant="primary" ><BookHalf className='bi' /> Prisma {VersionBadge('prisma')}</Button></Link>,
+            ],
+            desc: t('common:feature.desc2'),
+            img: <Image
+                alt=''
+                height={w}
+                width={w}
+                src='https://cdn-icons-png.flaticon.com/512/5968/5968342.png'
+            />,
+            title: 'Postgress + Prisma',
         }, {
             buttons: [
                 <Link passHref key={2} href={'https://www.cypress.io/'} legacyBehavior><Button className='m-1' variant="primary" ><BookHalf className='bi' /> Cypress {VersionBadge('cypress')}</Button></Link>,

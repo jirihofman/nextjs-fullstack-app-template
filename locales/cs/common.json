@@ -7,7 +7,7 @@
 		"developedWithLove": "Vyvinuto s ❤️"
 	},
 	"feature": {
-		"desc2": "Obsahuje ukázkovou Knex migraci.",
+		"desc2": "Obsahuje ukázkovou Knex migraci s jednou tabulkou.",
 		"desc3": "Unit, API a E2E testy používající Jest a Cypress.",
 		"desc4": "Výchozí GitHub Actions, která spustí všechny Vaše Jest a Cypress testy.",
 		"desc5": "Správa uživatelů bez nutnosti připojení k databázi.",
