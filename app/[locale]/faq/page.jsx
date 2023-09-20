@@ -1,4 +1,4 @@
-import pjson from '../../package.json';
+import pjson from '../../../package.json';
 import PropTypes from 'prop-types';
 
 export default function Faq() {

@@ -3,12 +3,14 @@
 import pjson from '../../package.json';
 import { UserButton, useSession } from '@clerk/nextjs';
 import { Container, Modal, Nav, NavDropdown, Navbar, Button, Spinner } from 'react-bootstrap';
-import useTranslation from 'next-translate/useTranslation';
+// import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
+import LocaleSwitcher from '../LocaleSwitcher';
+import { useTranslations } from 'next-intl';
 
 export default function Header() {
 
-    const { t, lang } = useTranslation();
+    const t = useTranslations('Index');
     const { isLoaded, isSignedIn } = useSession();
 
     const handleSignInClick = (evt) => {
@@ -30,7 +32,7 @@ export default function Header() {
                     {/* Display Sign-in for iPhones. Empty space when signed in. */}
                     <Nav className='d-inline d-sm-none' style={{ minWidth: '50px' }}>
                         {!isLoaded && <Spinner animation="border" variant="primary" size="sm" className='me-2' />}
-                        {!isSignedIn && isLoaded && <Button size='sm' variant='outline-primary' onClick={handleSignInClick}>{t('common:header.signin')}</Button>}
+                        {!isSignedIn && isLoaded && <Button size='sm' variant='outline-primary' onClick={handleSignInClick}>{t('header.signin')}</Button>}
                         <UserButton afterSignOutUrl="/" userProfileUrl={'/user-profile'} userProfileMode='navigation' />
                     </Nav>
 
@@ -44,25 +46,17 @@ export default function Header() {
                             <NavDropdown title={'Site'}>
                                 <Link passHref href="/faq" legacyBehavior><NavDropdown.Item>FAQ</NavDropdown.Item></Link>
                                 <NavDropdown.Divider />
-                                <a href="/cs">
-                                    <Button variant='outline-secondary' size='sm' active={lang === 'cs'} className='me-2 ms-2'>
-                                        🇨🇿
-                                    </Button>
-                                </a>
-                                <a href="/en">
-                                    <Button variant='outline-secondary' size='sm' active={lang === 'en'} className='me-2'>
-                                        🇬🇧
-                                    </Button>
-                                </a>
+                                <LocaleSwitcher />
+
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item role='button' data-bs-toggle='modal' data-bs-target='#exampleModal'>{t('common:header.about')}</NavDropdown.Item>
+                                <NavDropdown.Item role='button' data-bs-toggle='modal' data-bs-target='#exampleModal'>{t('header.about')}</NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
                             
                         {/* Hide Sign-in for all devices except iPhones. Empty space when signed in. */} 
                         <Nav className='d-none d-sm-flex'>
                             {!isLoaded && <Spinner animation="border" variant="primary" size="sm" className='me-2' />}
-                            {!isSignedIn && isLoaded && <Button variant='outline-primary' onClick={handleSignInClick}>{t('common:header.signin')}</Button>}
+                            {!isSignedIn && isLoaded && <Button variant='outline-primary' onClick={handleSignInClick}>{t('header.signin')}</Button>}
                             <UserButton afterSignOutUrl="/" userProfileUrl={'/user-profile'} userProfileMode='navigation' />
                         </Nav>
                     </Navbar.Collapse>
@@ -73,16 +67,16 @@ export default function Header() {
                 <Modal.Dialog className="modal-dialog">
                     <div className="modal-content">
                         <Modal.Header>
-                            <h5 className="modal-title" id="exampleModalLabel">{t('common:header.about')} <b>{pjson.displayName}</b></h5>
+                            <h5 className="modal-title" id="exampleModalLabel">{t('header.about')} <b>{pjson.displayName}</b></h5>
                         </Modal.Header>
                         <div className="modal-body">
                             <p>
-                                {t('common:header.description', { displayName: pjson.displayName })}
+                                {t('header.description', { displayName: pjson.displayName })}
                             </p>
                             <table>
                                 <tbody>
                                     <tr>
-                                        <th>{t('common:version')}</th>
+                                        <th>{t('version')}</th>
                                         <td>{pjson.version}</td>
                                     </tr>
                                 </tbody>

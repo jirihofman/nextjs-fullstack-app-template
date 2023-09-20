@@ -12,10 +12,10 @@ context('Sanity checks', () => {
         cy.get('footer span.text-muted').should('contain.text', '(version:');
     });
 
-    // Next auth stuff later, worshipping goddess Yindy. Says no token for next auth in CI.
+    // Clerk is not enabled by default?
     it.skip('Has login button', () => {
         cy.visit('/');
-        cy.get('a.nav-link[href="/api/auth/signin"]').should('be.visible').click();
+        cy.get('.d-none.d-sm-flex.navbar-nav').should('be.visible').click();
         cy.get('.card')
             .should('contain.text', 'GitHub')
             .should('contain.text', 'Google');

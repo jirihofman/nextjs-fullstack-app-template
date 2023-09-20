@@ -1,27 +1,45 @@
-import { NextResponse } from 'next/server';
-import i18n from './i18n';
 import { authMiddleware } from '@clerk/nextjs';
+import createIntlMiddleware from 'next-intl/middleware';
+
+// It really was a pain to combine the two middlewares into working one that doesn't screw up the routing for API calls.
+
+// Next-intl middleware
+const intlMiddlewareFunc = createIntlMiddleware({
+    defaultLocale: 'en',
+    locales: ['en', 'cs']
+});
+
+// Clerk middleware
+const authMiddlewareFunc = authMiddleware({
+    ignoredRoutes: [
+        '/api/status',
+        '/faq',
+        '/',
+        '/en', '/cs',
+        '/user-profile',
+    ],
+    publicRoutes: [
+        '/sign-in', '/en/sign-in', '/cs/sign-in',
+        '/sign-up',
+    ]
+});
 
 // This example protects all routes including api/trpc routes
 // Please edit this to allow other routes to be public as needed.
 // See https://clerk.com/docs/references/nextjs/auth-middleware for more information about configuring your middleware
-export default authMiddleware({
-    beforeAuth: (request) => {
-        // Execute next-auth middleware before Clerk's auth middleware
-        const locale = request.nextUrl.locale || i18n.defaultLocale;
-        request.nextUrl.searchParams.set('lang', locale);
-        request.nextUrl.href = request.nextUrl.href.replace(`/${locale}`, '');
-        return NextResponse.rewrite(request.nextUrl);
-    },
-    publicRoutes: [
-        '/',
-        '/en','/en/','/cs','/cs/','/cs/faq','/en/faq',
-        '/sign-in/[[...index]]',
-        '/sign-up/[[...index]]',
-        '/forgot-password/[[...index]]',
-        '/faq'
-    ],
-});
+export default function middleware(req, res, next) {
+
+    const pathsApi = [
+        '/api',
+    ];
+
+    // If it is API call, skip the translation middleware.
+    if (pathsApi.some((path) => req.nextUrl.pathname.startsWith(path))) {
+        return authMiddlewareFunc(req);
+    }
+
+    return intlMiddlewareFunc(req, res, next);
+}
 
 export const config = {
     matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],

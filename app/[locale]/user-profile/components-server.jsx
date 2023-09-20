@@ -1,4 +1,4 @@
-import prisma from '../../lib/prisma';
+import prisma from '../../../lib/prisma';
 import RefreshButton from './refresh-button';
 
 export default async function Table() {

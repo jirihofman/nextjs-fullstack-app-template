@@ -1,0 +1,29 @@
+{
+	"Index": {
+		"accessDenied1": "Access Denied",
+		"accessDenied2": "You must be signed in to view this page",
+		"features": "Features",
+		"version": "version",
+		"feature": {
+			"desc2": "With example initial Knex migration",
+			"desc3": "Unit, API and E2E tests with Jest and Cypress.",
+			"desc4": "Default GitHub Actions running all your Jest and Cypress tests.",
+			"desc5": "User management with signup, signin, password reset and more without any backend code.",
+			"desc6": "Internationalization with next-intl. Used to be next-translate.",
+			"desc7": "Pure JavaScript library for client-side toasts."
+		},
+		"footer": {
+			"developedWithLove": "Developed with ❤️"
+		},
+		"header": {
+			"description": "This template, {{displayName}}, lets you quickly setup fullstack react app.",
+			"about": "About",
+			"profile": "Profile",
+			"signin": "Sign in",
+			"signout": "Sign out"
+		}
+	},
+	"LocaleSwitcher": {
+		"switchLocale": "Switch to {locale, select, de {German} en {English} other {Unknown}}"
+	}
+}

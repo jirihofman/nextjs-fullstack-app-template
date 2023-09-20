@@ -1,4 +1,8 @@
-const nextTranslate = require('next-translate-plugin');
+// const nextTranslate = require('next-translate-plugin');
+const withNextIntl = require('next-intl/plugin')(
+    // This is the default (also the `src` folder is supported out of the box)
+    './i18n.js'
+);
 
 const nextConfig = {
     images: {
@@ -29,4 +33,4 @@ const nextConfig = {
         return config;
     },
 };
-module.exports = nextTranslate((nextConfig));
+module.exports = withNextIntl((nextConfig));
