@@ -40,6 +40,9 @@ const authMiddlewareFunc = authMiddleware({
         return intlMiddleware(req);
     },
 
+    // This is not processed by Clerk's auth middleware at all.
+    ignoredRoutes: ['/api/status'],
+
     // Ensure that locale specific sign-in pages are public
     publicRoutes: publicRoutes,
 });
@@ -47,7 +50,3 @@ const authMiddlewareFunc = authMiddleware({
 export const config = {
     matcher: ['/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],
 };
-
-
-
-
