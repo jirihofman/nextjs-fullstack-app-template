@@ -24,15 +24,15 @@ export default async function LocaleLayout({
             <head>
                 <Script src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.3' crossOrigin='anonymous' defer />
             </head>
-            <body>
-                <NextIntlClientProvider locale={locale} messages={messages}>
-                    <ClerkProvider>
+            <NextIntlClientProvider locale={locale} messages={messages}>
+                <ClerkProvider>
+                    <body suppressHydrationWarning={true}>
                         <Main>
                             <main>{children}</main>
                         </Main>
-                    </ClerkProvider>
-                </NextIntlClientProvider>
-            </body>
+                    </body>
+                </ClerkProvider>
+            </NextIntlClientProvider>
         </html>
     );
 }

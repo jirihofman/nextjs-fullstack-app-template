@@ -1,47 +1,53 @@
 import { authMiddleware } from '@clerk/nextjs';
-import createIntlMiddleware from 'next-intl/middleware';
 
-// It really was a pain to combine the two middlewares into working one that doesn't screw up the routing for API calls.
+import createMiddleware from 'next-intl/middleware';
+import { NextResponse } from 'next/server';
 
-// Next-intl middleware
-const intlMiddlewareFunc = createIntlMiddleware({
+const intlMiddleware = createMiddleware({
     defaultLocale: 'en',
-    locales: ['en', 'cs']
+    locales: ['en', 'cs'],
+
 });
 
-// Clerk middleware
-const authMiddlewareFunc = authMiddleware({
-    ignoredRoutes: [
-        '/api/status',
-        '/faq',
-        '/',
-        '/en', '/cs',
-        '/user-profile',
-    ],
-    publicRoutes: [
-        '/sign-in', '/en/sign-in', '/cs/sign-in',
-        '/sign-up',
-    ]
-});
+const apiRoutes = ['/api', '/trpc', '/cs/sign-in'];
+const publicRoutes = [
+    '/', 
+    '/cs', 
+    '/faq', 
+    '/:locale/faq',
+    '/:locale/sign-in',
+];
 
-// This example protects all routes including api/trpc routes
-// Please edit this to allow other routes to be public as needed.
-// See https://clerk.com/docs/references/nextjs/auth-middleware for more information about configuring your middleware
-export default function middleware(req, res, next) {
+export default function middleware(req, res) {
 
-    const pathsApi = [
-        '/api',
-    ];
-
-    // If it is API call, skip the translation middleware.
-    if (pathsApi.some((path) => req.nextUrl.pathname.startsWith(path))) {
-        return authMiddlewareFunc(req);
+    // If the request is for an API route, skip next-intl middleware
+    if (apiRoutes.some((path) => req.nextUrl.pathname.startsWith(path))) {
+        req.skipIntl = true;
+    } else if (req.nextUrl.pathname.startsWith('/cs/sign-in')) {
+        // Hacky sh!t to redirect to /cs/sign-in
+        return NextResponse.redirect(new URL('/en/sign-in', req.nextUrl.origin));
     }
 
-    return intlMiddlewareFunc(req, res, next);
+    return authMiddlewareFunc(req, res);
 }
 
+const authMiddlewareFunc = authMiddleware({
+    beforeAuth: (req) => {
+        // Execute next-intl middleware before Clerk's auth middleware
+        if (req.skipIntl) {
+            return;
+        }
+        return intlMiddleware(req);
+    },
+
+    // Ensure that locale specific sign-in pages are public
+    publicRoutes: publicRoutes,
+});
+
 export const config = {
-    matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
+    matcher: ['/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],
 };
+
+
+
 

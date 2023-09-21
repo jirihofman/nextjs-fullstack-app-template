@@ -17,7 +17,8 @@ export default function UserProfilePage({ children }) {
             <Button variant="primary" onClick={async () => {
                 setIsPending(true);
                 try {
-                    const res = await fetch('api/click', { method: 'POST' });
+                    // Hacky stuff to not call stuff like `/en/api/click`
+                    const res = await fetch(window.location.origin + '/api/click', { method: 'POST' });
                     if (res.ok) {
                         Notify.success('Success');
                     } else {
