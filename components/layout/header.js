@@ -1,19 +1,22 @@
+'use client';
+
 import pjson from '../../package.json';
-import { signIn, signOut, useSession } from 'next-auth/react';
-import { Container, Modal, Nav, NavDropdown, Navbar, Button, Spinner, ProgressBar } from 'react-bootstrap';
-import useTranslation from 'next-translate/useTranslation';
+import { UserButton, useSession } from '@clerk/nextjs';
+import { Container, Modal, Nav, NavDropdown, Navbar, Button, Spinner } from 'react-bootstrap';
+// import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
-import styles from './header.module.css';
+import LocaleSwitcher from '../LocaleSwitcher';
+import { useTranslations } from 'next-intl';
 
 export default function Header() {
 
-    const { t, lang } = useTranslation();
-    const { data: session, status } = useSession();
-    const loading = status === 'loading';
+    const t = useTranslations('Index');
+    const { isLoaded, isSignedIn } = useSession();
 
     const handleSignInClick = (evt) => {
         evt.preventDefault();
-        signIn();
+        // Redirect to sign-in page.
+        window.location.href = '/sign-in';
     };
 
     return (
@@ -28,8 +31,9 @@ export default function Header() {
 
                     {/* Display Sign-in for iPhones. Empty space when signed in. */}
                     <Nav className='d-inline d-sm-none' style={{ minWidth: '50px' }}>
-                        {session ? session.user.image && <span style={{ backgroundImage: `url('${session.user.image}')`, marginTop: '-5px' }} className={styles.avatar} />
-                            : loading ? <Spinner animation='border' variant='secondary' /> : <Nav.Link onClick={handleSignInClick}>{t('common:header.signin')}</Nav.Link>}
+                        {!isLoaded && <Spinner animation="border" variant="primary" size="sm" className='me-2' />}
+                        {!isSignedIn && isLoaded && <Button size='sm' variant='outline-primary' onClick={handleSignInClick}>{t('header.signin')}</Button>}
+                        <UserButton afterSignOutUrl="/" userProfileUrl={'/user-profile'} userProfileMode='navigation' />
                     </Nav>
 
                     <Navbar.Collapse id="navbarScroll">
@@ -42,21 +46,18 @@ export default function Header() {
                             <NavDropdown title={'Site'}>
                                 <Link passHref href="/faq" legacyBehavior><NavDropdown.Item>FAQ</NavDropdown.Item></Link>
                                 <NavDropdown.Divider />
-                                <Link href="/" locale="cs" legacyBehavior><Button variant='outline-secondary' size='sm' active={lang === 'cs'} className='me-2 ms-2'>🇨🇿</Button></Link>
-                                <Link href="/" locale="en" legacyBehavior><Button variant='outline-secondary' size='sm' active={lang === 'en'} className='me-2'>🇬🇧</Button></Link>
+                                <LocaleSwitcher />
+
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item role='button' data-bs-toggle='modal' data-bs-target='#exampleModal'>{t('common:header.about')}</NavDropdown.Item>
+                                <NavDropdown.Item role='button' data-bs-toggle='modal' data-bs-target='#exampleModal'>{t('header.about')}</NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
-                        <Nav>
-                            {session ? <NavDropdown align={'end'} title={session.user.image && <span style={{ backgroundImage: `url('${session.user.image}')`, marginTop: '-5px' }} className={styles.avatar} />}>
-                                <Link passHref href="/user/profile" legacyBehavior><NavDropdown.Item>{t('common:header.profile')}</NavDropdown.Item></Link>
-                                <NavDropdown.Divider />
-                                <Link passHref href="/api/auth/signout" legacyBehavior><NavDropdown.Item onClick={(e) => { e.preventDefault(); signOut(); }}>{t('common:header.signout')}</NavDropdown.Item></Link>
-                            </NavDropdown>
-                                /* Display Sign-in for iPads and larger */
-                                : loading ? <ProgressBar now={100} striped animated variant='secondary' style={{ minWidth: '62px' }} /> : <Link passHref href="/api/auth/signin" legacyBehavior><Nav.Link className='d-none d-sm-inline' disabled={loading} onClick={handleSignInClick}>{t('common:header.signin')}</Nav.Link></Link>
-                            }
+                            
+                        {/* Hide Sign-in for all devices except iPhones. Empty space when signed in. */} 
+                        <Nav className='d-none d-sm-flex'>
+                            {!isLoaded && <Spinner animation="border" variant="primary" size="sm" className='me-2' />}
+                            {!isSignedIn && isLoaded && <Button variant='outline-primary' onClick={handleSignInClick}>{t('header.signin')}</Button>}
+                            <UserButton afterSignOutUrl="/" userProfileUrl={'/user-profile'} userProfileMode='navigation' />
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
@@ -66,16 +67,16 @@ export default function Header() {
                 <Modal.Dialog className="modal-dialog">
                     <div className="modal-content">
                         <Modal.Header>
-                            <h5 className="modal-title" id="exampleModalLabel">{t('common:header.about')} <b>{pjson.displayName}</b></h5>
+                            <h5 className="modal-title" id="exampleModalLabel">{t('header.about')} <b>{pjson.displayName}</b></h5>
                         </Modal.Header>
                         <div className="modal-body">
                             <p>
-                                {t('common:header.description', { displayName: pjson.displayName })}
+                                {t('header.description', { displayName: pjson.displayName })}
                             </p>
                             <table>
                                 <tbody>
                                     <tr>
-                                        <th>{t('common:version')}</th>
+                                        <th>{t('version')}</th>
                                         <td>{pjson.version}</td>
                                     </tr>
                                 </tbody>

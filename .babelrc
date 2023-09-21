@@ -8,7 +8,8 @@
 			"plugins": [
 				["istanbul", {
 					"exclude": [
-						"!**/node_modules/**",
+						"**/node_modules/**",
+						"**/middleware.js",
 						"**/test/**"
 					]
 				}, "some unique name"]

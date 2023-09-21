@@ -1,13 +1,13 @@
 /* eslint react/prop-types: 0 */
-import { SessionProvider } from 'next-auth/react';
+import { ClerkProvider } from '@clerk/nextjs';
 import '../style/index.css';
 import { Analytics } from '@vercel/analytics/react';
 
 export default function MyApp({ Component, pageProps }) {
     return (
-        <SessionProvider session={pageProps.session}>
+        <ClerkProvider {...pageProps}>
             <Component {...pageProps} />
             <Analytics/>
-        </SessionProvider>
+        </ClerkProvider>
     );
 }

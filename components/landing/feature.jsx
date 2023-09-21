@@ -1,13 +1,15 @@
+'use client';
+
 import { Button, Container, Badge } from 'react-bootstrap';
 import { BookHalf } from 'react-bootstrap-icons';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import Image from 'next/image';
 import packageLock from '../../package-lock.json';
 import ButtonToast from './button-toast';
 
 const Feature = () => {
-    const { t } = useTranslation();
+    const t = useTranslations('Index');
     const w = '40';
     const features = [
         {
@@ -40,24 +42,24 @@ const Feature = () => {
                 <Link
                     passHref
                     key={2}
-                    href={'https://dev.mysql.com/doc/relnotes/mysql/8.0/en/'}
-                    legacyBehavior><Button className='m-1' variant="primary" ><BookHalf className='bi' /> MySQL</Button></Link>,
-                <Link passHref key={1} href={'https://knexjs.org/'} legacyBehavior><Button className='m-1' variant="primary" ><BookHalf className='bi' /> Knex {VersionBadge('knex')}</Button></Link>,
+                    href={'https://vercel.com/storage/postgres'}
+                    legacyBehavior><Button className='m-1' variant="primary" ><BookHalf className='bi' /> @vercel/postgres {VersionBadge('@vercel/postgres')}</Button></Link>,
+                <Link passHref key={1} href={'https://www.prisma.io/'} legacyBehavior><Button className='m-1' variant="primary" ><BookHalf className='bi' /> Prisma {VersionBadge('prisma')}</Button></Link>,
             ],
-            desc: t('common:feature.desc2'),
+            desc: t('feature.desc2'),
             img: <Image
                 alt=''
                 height={w}
                 width={w}
-                src='https://cdn-icons-png.flaticon.com/512/5968/5968313.png'
+                src='https://cdn-icons-png.flaticon.com/512/5968/5968342.png'
             />,
-            title: 'MySQL 8.0 + Knex',
+            title: 'Postgress + Prisma',
         }, {
             buttons: [
                 <Link passHref key={2} href={'https://www.cypress.io/'} legacyBehavior><Button className='m-1' variant="primary" ><BookHalf className='bi' /> Cypress {VersionBadge('cypress')}</Button></Link>,
                 <Link passHref key={1} href={'https://jestjs.io/'} legacyBehavior><Button className='m-1' variant="primary" ><BookHalf className='bi' /> Jest {VersionBadge('jest')}</Button></Link>,
             ],
-            desc: t('common:feature.desc3'),
+            desc: t('feature.desc3'),
             img: <Image
                 alt=''
                 height={w}
@@ -69,7 +71,7 @@ const Feature = () => {
             buttons: [
                 <Link key={1} passHref href="https://docs.github.com/en/actions" legacyBehavior><Button className='m-1' variant="primary"><BookHalf className='bi' /> GitHub Actions</Button></Link>,
             ],
-            desc: t('common:feature.desc4'),
+            desc: t('feature.desc4'),
             img: <Image
                 alt=''
                 height={w}
@@ -79,32 +81,32 @@ const Feature = () => {
             title: 'GitHub Actions',
         }, {
             buttons: [
-                <Link key={1} passHref href="https://next-auth.js.org/" legacyBehavior><Button className='m-1' variant="primary"><BookHalf className='bi' /> NextAuth.js {VersionBadge('next-auth')}</Button></Link>,
+                <Link key={1} passHref href="https://clerk.com/" legacyBehavior><Button className='m-1' variant="primary"><BookHalf className='bi' /> Clerk {VersionBadge('@clerk/nextjs')}</Button></Link>,
             ],
-            desc: t('common:feature.desc5'),
+            desc: t('feature.desc5'),
             img: <Image
                 alt=''
                 height={w}
                 width={w}
-                src='https://next-auth.js.org/img/logo/logo-sm.png'
+                src='https://clerk.com/_next/image?url=%2Fimages%2Fclerk-logomark-light.svg&w=48&q=75'
             />,
-            title: 'NextAuth authentication',
+            title: 'Clerk authentication',
         }, {
             buttons: [
                 <Link
                     key={1}
                     passHref
-                    href="https://github.com/aralroca/next-translate/"
-                    legacyBehavior><Button className='m-1' variant="primary"><BookHalf className='bi' /> next-translate {VersionBadge('next-translate')}</Button></Link>,
+                    href="https://next-intl-docs.vercel.app/"
+                    legacyBehavior><Button className='m-1' variant="primary"><BookHalf className='bi' /> next-intl {VersionBadge('next-intl')}</Button></Link>,
             ],
-            desc: t('common:feature.desc6', null, { default: 'I18n: 🇨🇿, 🇬🇧' }),
+            desc: t('feature.desc6', null, { fallback: 'I18n: 🇨🇿, 🇬🇧' }),
             img: <Image
                 alt=''
                 height={w}
                 width={w}
-                src='https://github.com/aralroca/next-translate/raw/master/images/logo.svg'
+                src='https://raw.githubusercontent.com/amannn/next-intl/main/docs/public/favicon/favicon-32x32.png'
             />,
-            title: 'Translations',
+            title: 'Next-intl',
         }, {
             buttons: [
                 <Link
@@ -114,7 +116,7 @@ const Feature = () => {
                     legacyBehavior><Button className='m-1' variant="primary"><BookHalf className='bi' /> notiflix {VersionBadge('notiflix')}</Button></Link>,
                 <ButtonToast key={2} />,
             ],
-            desc: t('common:feature.desc7'),
+            desc: t('feature.desc7'),
             img: <Image
                 alt=''
                 height={w}
@@ -126,7 +128,7 @@ const Feature = () => {
     ];
     return (
         <Container className='px-4 py-5'>
-            <h2 className="pb-2 border-bottom" id='features'>{t('common:features')}</h2>
+            <h2 className="pb-2 border-bottom" id='features'>{t('features')}</h2>
             <div className="row g-4 py-5 row-cols-1 row-cols-lg-3">
                 {
                     features.map((feature, key) => <div key={key} className="col d-flex align-items-start">
@@ -149,6 +151,6 @@ export default Feature;
 
 /** Creates a Badge with currently installed package version. */
 const VersionBadge = (name) => {
-    const version = packageLock.dependencies[name]?.version;
+    const version = packageLock.packages['node_modules/' + name]?.version;
     return <Badge bg='info'>{version}</Badge>;
 };

@@ -1,0 +1,29 @@
+{
+	"Index": {
+		"accessDenied1": "Přístup odepřen",
+		"accessDenied2": "Musíte být přihlášeni",
+		"features": "Funkce",
+		"version": "verze",
+		"footer": {
+			"developedWithLove": "Vyvinuto s ❤️"
+		},
+		"feature": {
+			"desc2": "Obsahuje ukázkovou Knex migraci s jednou tabulkou.",
+			"desc3": "Unit, API a E2E testy používající Jest a Cypress.",
+			"desc4": "Výchozí GitHub Actions, která spustí všechny Vaše Jest a Cypress testy.",
+			"desc5": "Správa uživatelů bez nutnosti připojení k databázi.",
+			"desc6": "Lokalizace pomocí next-intl. Původně next-translate.",
+			"desc7": "Toast oznámení pomocí čistě Javascriptové knihovny."
+		},
+		"header": {
+			"description": "Tato šablona, {{displayName}}, Vám umožní rychle vytvořit fullstack react aplikaci. ",
+			"about": "O aplikaci",
+			"profile": "Profil",
+			"signin": "Login",
+			"signout": "Logout"
+		}
+	},
+	"LocaleSwitcher": {
+		"switchLocale": "S{locale, select, cs {🇨🇿} en {🇬🇧} other {Unknown}}"
+	}
+}

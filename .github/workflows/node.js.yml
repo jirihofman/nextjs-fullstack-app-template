@@ -19,6 +19,8 @@ env:
   DB_USER: root
   DB_PASSWORD: root
   GPR_TOKEN: ${{ secrets.GPR_TOKEN }}
+  NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY }}
+  CLERK_SECRET_KEY: ${{ secrets.CLERK_SECRET_KEY }}
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -62,10 +64,12 @@ jobs:
         # GH_TOKEN for @jirihofman/react-profile package
         GH_TOKEN: ${{ github.token }}
       run: npm ci
-    - name: Knex migrations 💾
-      run: |
-        npm run migrate:latest
-        npm run seed:run
+    # TODO: Replace Knex migrations with an ORM
+    # - name: Knex migrations 💾
+    #   run: |
+    #     npm run migrate:latest
+    #     npm run seed:run
+
     # - name: Test 🧪
     #   env:
     #     GH_TOKEN: ${{ github.token }}
@@ -88,8 +92,8 @@ jobs:
     - run: npm run test:coverage:jest
     - run: npm run test:coverage:component
     
-    - run: npm run test:db:clear
-    - run: npm run test:db:init
+    #- run: npm run test:db:clear
+    #- run: npm run test:db:init
     - run: npm run test:build
     - run: npm run test:start & npm run test:wait-on
     - run: npm run test:cy:run

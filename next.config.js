@@ -1,10 +1,15 @@
-const nextTranslate = require('next-translate');
+// const nextTranslate = require('next-translate-plugin');
+const withNextIntl = require('next-intl/plugin')(
+    // This is the default (also the `src` folder is supported out of the box)
+    './i18n.js'
+);
 
 const nextConfig = {
     images: {
+        dangerouslyAllowSVG: true,
         domains: [
             // Avatar icons from different Next-auth providers. Icons for included software.
-            'next-auth.js.org',
+            'clerk.com',
             'github.githubassets.com',
             'github.com',
             'avatars.githubusercontent.com',
@@ -16,5 +21,16 @@ const nextConfig = {
     },
     reactStrictMode: true,
     transpilePackages: ['@jirihofman/react-profile'],
+    webpack: (config, { isServer }) => {
+
+        // If client-side, don't polyfill `fs`
+        if (!isServer) {
+            config.resolve.fallback = {
+                fs: false,
+            };
+        }
+
+        return config;
+    },
 };
-module.exports = nextTranslate((nextConfig));
+module.exports = withNextIntl((nextConfig));

@@ -1,5 +1,5 @@
-import cs from '../locales/cs/common.json';
-import en from '../locales/en/common.json';
+import cs from '../messages/cs.json';
+import en from '../messages/en.json';
 import _ from 'lodash';
 
 describe('lang', function() {
