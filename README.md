@@ -60,9 +60,6 @@ npm run seed:run
 ## .env files
 TODO: rename command
 
-## GitHub Package Repository access
-Generate your own [Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) with scope `packages:read` so that the dependency @jirihofman/react-profile can be donwloaded.
-
 ## Codecov
 - [ ] In README.md replace `jirihofman/nextjs-fullstack-app-template` with `your-username/your-new-repository`
 
