@@ -16,7 +16,7 @@
 			"desc7": "Toast oznámení pomocí čistě Javascriptové knihovny."
 		},
 		"header": {
-			"description": "Tato šablona, {{displayName}}, Vám umožní rychle vytvořit fullstack react aplikaci. ",
+			"description": "Tato šablona Vám umožní rychle vytvořit fullstack react aplikaci. ",
 			"about": "O aplikaci",
 			"profile": "Profil",
 			"signin": "Login",

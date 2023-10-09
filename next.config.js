@@ -20,7 +20,6 @@ const nextConfig = {
         ],
     },
     reactStrictMode: true,
-    transpilePackages: ['@jirihofman/react-profile'],
     webpack: (config, { isServer }) => {
 
         // If client-side, don't polyfill `fs`
