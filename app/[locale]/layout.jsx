@@ -5,7 +5,6 @@ import { ClerkProvider } from '@clerk/nextjs';
 import Main from '../../components/layout/main';
 import pjson from '../../package.json';
 /* ensure all pages have Bootstrap CSS */
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../../style/index.css';
 
 export default async function LocaleLayout({
