@@ -16,7 +16,7 @@
 			"developedWithLove": "Developed with ❤️"
 		},
 		"header": {
-			"description": "This template, {{displayName}}, lets you quickly setup fullstack react app.",
+			"description": "This template lets you quickly setup fullstack react app.",
 			"about": "About",
 			"profile": "Profile",
 			"signin": "Sign in",
