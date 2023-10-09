@@ -15,8 +15,8 @@ Following features not in  `alexeagleson/nextjs-fullstack-app-template` were add
 - implement unit and end-to-end testing in a Nextjs app with Jest and Cypress
 - create CI/CD pipeline with Github actions and Vercel
 - internationalization using [next-translate](https://github.com/aralroca/next-translate)
-- NextAuth
-- connect a database to your Next.js app with MySQL using Knex query builder
+- Clerk
+- connect a Postgres database to your Next.js app using Prisma and @vercel/postgress
 - code coverage via [codecov.io](https://codecov.io)
 
 ## Code coverage notes
@@ -49,10 +49,10 @@ Once you create a repository based on this template, you should do the following
 
 ## MySQL and Knex
 - [ ] rename database
-- [ ] run Knex migrations with
+- [ ] run Prisma migrations with
 ```sh
-npm run migrate:latest
-npm run seed:run
+npx prisma generate
+npx prisma migrate dev
 ```
 
 ## GitHub Actions
