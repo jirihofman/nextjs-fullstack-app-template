@@ -14,40 +14,14 @@ env:
   NEXT_PUBLIC_NODE_ENV: test
   # Replaces the value set in .env.test.local
   # DB stuff. There is a default mysql server with root/root. See https://ovirium.com/blog/how-to-make-mysql-work-in-your-github-actions/
-  MYSQL_URI: "mysql://root:root@127.0.0.1:3306/nfat2?synchronize=false&charset=utf8mb4"
-  DB_DATABASE: nfat2
-  DB_USER: root
-  DB_PASSWORD: root
-  GPR_TOKEN: ${{ secrets.GPR_TOKEN }}
   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY }}
   CLERK_SECRET_KEY: ${{ secrets.CLERK_SECRET_KEY }}
 jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    # strategy:
-    #   matrix:
-    #     node-version: [16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
-    - name: Set up MySQL
-      run: |
-        sudo /etc/init.d/mysql start
-        echo "MySQL started"
-        mysql -e 'SHOW DATABASES;' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
-        echo "MySQL default databases"
-        mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
-        echo "MySQL new database created"
-        mysql -e 'SHOW DATABASES;' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
-        echo "MySQL default databases with the new one"
-        mysql -e 'ALTER USER "root"@"localhost" IDENTIFIED WITH mysql_native_password BY "${{ env.DB_PASSWORD }}";' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
-        echo "MySQL user changed to be able to auth using username/password"
     - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
     - uses: actions/cache@v3
       with:
         # See here for caching with `yarn` https://github.com/actions/cache/blob/main/examples.md#node---yarn or you can leverage caching with actions/setup-node https://github.com/actions/setup-node
@@ -61,32 +35,8 @@ jobs:
           ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
     - name: Install 🛠
       env:
-        # GH_TOKEN for @jirihofman/react-profile package
         GH_TOKEN: ${{ github.token }}
       run: npm ci
-    # TODO: Replace Knex migrations with an ORM
-    # - name: Knex migrations 💾
-    #   run: |
-    #     npm run migrate:latest
-    #     npm run seed:run
-
-    # - name: Test 🧪
-    #   env:
-    #     GH_TOKEN: ${{ github.token }}
-    #   run: |
-    #     echo Run all the sh!t with a single command runnable on devs' machines
-    #     npm run test:ci
-    # - name: End to end tests run 🧪
-    #   uses: cypress-io/github-action@v5.0.2
-    #   with:
-    #     # we have already installed all dependencies above
-    #     install: false
-    #     build: npm run build
-    #     start: npm run start
-    #     wait-on: 'http://localhost:5100/api/status'
-    #     wait-on-timeout: 20
-    #     browser: chrome
-    #     config: 'baseUrl=http://localhost:5100'
     - run: npm run pretest
     - run: npm run test:coverage:prepare-folders
     - run: npm run test:coverage:jest
