@@ -1,12 +1,12 @@
 {
-  "name": "nextjs-fullstack-app-template-potato",
+  "name": "nextjs-fullstack-app-template",
   "author": {
     "name": "Jiří Hofman",
     "url": "https://nextjs-fullstack-app-template-potato.vercel.app"
   },
   "description": "A template for creating a production-ready fullstack Next.js application with: React Bootstrap and Clerk using Cypress and GitHub Actions",
   "displayName": "My Next App Template",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "private": false,
   "license": "MIT",
   "engines": {
@@ -52,13 +52,13 @@
     "@prisma/client": "^5.4.1",
     "@vercel/analytics": "^1.0.0",
     "@vercel/postgres": "^0.4.1",
-    "bootstrap": "^5.2.1",
+    "bootstrap": "^5.3.2",
     "lodash": "^4.17.21",
     "next": "^13.5.4",
     "next-intl": "^3.0.0-beta.18",
     "notiflix": "^3.2.6",
     "react": "^18.2.0",
-    "react-bootstrap": "^2.3.1",
+    "react-bootstrap": "^2.9.0",
     "react-bootstrap-icons": "^1.8.2",
     "react-dom": "^18.2.0"
   },
