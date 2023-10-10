@@ -132,7 +132,7 @@ const Feature = () => {
             <div className="row g-4 py-5 row-cols-1 row-cols-lg-3">
                 {
                     features.map((feature, key) => <div key={key} className="col d-flex align-items-start">
-                        <div className="icon-square bg-light text-dark flex-shrink-0 me-3">
+                        <div className="icon-square bg-light flex-shrink-0 me-2 p-1 rounded">
                             {feature.img}
                         </div>
                         <div>

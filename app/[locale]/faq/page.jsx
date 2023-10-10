@@ -1,6 +1,6 @@
 import pjson from '../../../package.json';
 import PropTypes from 'prop-types';
-
+import { Col, Row } from 'react-bootstrap';
 export default function Faq() {
 
     const data = [
@@ -33,18 +33,20 @@ export default function Faq() {
     return <div className='container-xxl'>
 
         <h1>FAQ</h1>
-        {data.map((q, i) =>
-            <div className='col-10 float-left clearfix mb-3 mb-md-2' key={i}>
-                <h2>
-                    <span className='f4 lh-big faq-q'>{`${i + 1}. ${q.question}`}</span>
-                </h2>
-                <div className='col-10 mt-3'>
-                    <div className='ms-4 d-flex flex-wrap faq-a'>
-                        {q.answer}
-                    </div>
-                </div>
-            </div>
-        )}
+        {data.map((q, i) => (
+            <Row className='clearfix mb-3 mb-md-2' key={i}>
+                <Col xs={10}>
+                    <h2>
+                        <span className='f4 lh-big faq-q'>{`${i + 1}. ${q.question}`}</span>
+                    </h2>
+                    <Col xs={10} className='mt-3'>
+                        <div className='ms-4 d-flex flex-wrap faq-a'>
+                            {q.answer}
+                        </div>
+                    </Col>
+                </Col>
+            </Row>
+        ))}
     </div>;
 }
 

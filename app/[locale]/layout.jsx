@@ -19,8 +19,11 @@ export default async function LocaleLayout({
         notFound();
     }
 
+    // Use default theme for now
+    const theme = 'light';
+
     return (
-        <html lang={locale}>
+        <html lang={locale} data-bs-theme={theme}>
             <head>
                 <Script src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.3' crossOrigin='anonymous' defer />
             </head>

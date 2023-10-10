@@ -24,7 +24,7 @@ export default function Header() {
             <noscript>
                 <style>{'.nojs-show { opacity: 1; top: 0; }'}</style>
             </noscript>
-            <Navbar bg="light" expand="sm">
+            <Navbar expand="sm">
                 <Container fluid>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Brand href="/">{pjson.displayName}</Navbar.Brand>
