@@ -67,7 +67,7 @@
     "@commitlint/cli": "^18.4.2",
     "@commitlint/config-conventional": "^18.4.0",
     "@cypress/code-coverage": "^3.10.0",
-    "@types/react": "18.0.26",
+    "@types/react": "18.2.37",
     "babel-loader": "^8.2.4",
     "babel-plugin-istanbul": "^6.1.1",
     "cypress": "^13.5.0",
