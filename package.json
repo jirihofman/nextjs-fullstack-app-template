@@ -75,7 +75,7 @@
     "eslint-config-next": "^14.0.4",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-jest": "^27.6.0",
-    "husky": "^7.0.4",
+    "husky": "^8.0.3",
     "jest": "latest",
     "prisma": "^5.6.0",
     "wait-on": "^7.2.0"
