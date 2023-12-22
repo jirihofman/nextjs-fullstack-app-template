@@ -57,7 +57,7 @@ export default function Header() {
                         <Nav className='d-none d-sm-flex'>
                             {!isLoaded && <Spinner animation="border" variant="primary" size="sm" className='me-2' />}
                             {!isSignedIn && isLoaded && <Button variant='outline-primary' onClick={handleSignInClick}>{t('header.signin')}</Button>}
-                            <UserButton afterSignOutUrl="/" userProfileUrl={'/user-profile'} userProfileMode='navigation' />
+                            <UserButton showName afterSignOutUrl="/" userProfileUrl={'/user-profile'} userProfileMode='navigation' />
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

@@ -6,14 +6,13 @@ import { NextResponse } from 'next/server';
 const intlMiddleware = createMiddleware({
     defaultLocale: 'en',
     locales: ['en', 'cs'],
-
 });
 
-const apiRoutes = ['/api', '/trpc', '/cs/sign-in'];
+const apiRoutes = ['/api', '/trpc'];
 const publicRoutes = [
-    '/', 
-    '/cs', 
-    '/faq', 
+    '/',
+    '/:locale',
+    '/faq',
     '/:locale/faq',
     '/:locale/sign-in',
 ];
@@ -26,6 +25,9 @@ export default function middleware(req, res) {
     } else if (req.nextUrl.pathname.startsWith('/cs/sign-in')) {
         // Hacky sh!t to redirect to /cs/sign-in
         return NextResponse.redirect(new URL('/en/sign-in', req.nextUrl.origin));
+    } else if (req.nextUrl.pathname.startsWith('/cs/user-profile')) {
+        // Hacky sh!t to redirect to /cs/user-profile
+        return NextResponse.redirect(new URL('/en/user-profile', req.nextUrl.origin));
     }
 
     return authMiddlewareFunc(req, res);
