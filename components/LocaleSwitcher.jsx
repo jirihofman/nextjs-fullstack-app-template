@@ -1,10 +1,10 @@
 import { useLocale } from 'next-intl';
-import { usePathname } from 'next-intl/client';
-import Link from 'next-intl/link';
+import { createSharedPathnamesNavigation } from 'next-intl/navigation';
 
 export default function LocaleSwitcher() {
     const locale = useLocale();
     const otherLocale = locale === 'en' ? 'cs' : 'en';
+    const { Link, usePathname } = createSharedPathnamesNavigation({ locale });
     const pathname = usePathname();
 
     return (
