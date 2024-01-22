@@ -48,7 +48,7 @@
     "test:coverage:e2e": "cypress run --browser chrome --env coverage=true && cp cypress-coverage/coverage-final.json reports/from-cypress.json"
   },
   "dependencies": {
-    "@clerk/nextjs": "^4.29.1",
+    "@clerk/nextjs": "^4.29.4",
     "@prisma/client": "^5.7.0",
     "@vercel/analytics": "^1.1.1",
     "@vercel/postgres": "^0.5.1",
