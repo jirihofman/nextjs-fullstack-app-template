@@ -77,7 +77,7 @@
     "eslint-plugin-jest": "^27.6.0",
     "husky": "^8.0.3",
     "jest": "latest",
-    "prisma": "^5.6.0",
+    "prisma": "^5.9.1",
     "wait-on": "^7.2.0"
   },
   "nyc": {
