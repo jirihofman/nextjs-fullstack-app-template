@@ -73,7 +73,7 @@
     "cypress": "^13.6.4",
     "eslint": "8.12.0",
     "eslint-config-next": "^14.0.4",
-    "eslint-plugin-cypress": "^2.12.1",
+    "eslint-plugin-cypress": "^2.15.1",
     "eslint-plugin-jest": "^27.6.0",
     "husky": "^9.0.10",
     "jest": "latest",
