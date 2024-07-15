@@ -55,7 +55,7 @@
     "bootstrap": "^5.3.3",
     "lodash": "^4.17.21",
     "next": "^14.1.1",
-    "next-intl": "^3.4.0",
+    "next-intl": "^3.17.0",
     "notiflix": "^3.2.6",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",
