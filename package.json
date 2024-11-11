@@ -65,7 +65,7 @@
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@commitlint/cli": "^19.5.0",
-    "@commitlint/config-conventional": "^19.2.2",
+    "@commitlint/config-conventional": "^19.5.0",
     "@cypress/code-coverage": "^3.13.4",
     "@types/react": "18.3.12",
     "babel-loader": "^9.1.3",
